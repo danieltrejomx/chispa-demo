@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifas - Chispa</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="header-left">
+                <a href="/">INICIO</a>
+                <a href="/checkout.html">MEMBRESÍAS</a>
+                <a href="/fiestas.html">PARTY CENTER</a>
+            </div>
+            <a href="/" class="logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo">
+            </a>
+            <div class="header-right">
+                <a href="/contacto.html">CONTACTO</a>
+                <a href="/cafeteria.html">CAFETERÍA</a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main container">
+        <h1 class="section-title text-center">Membresías y Pases</h1>
+        
+        <div id="step1" class="grid-2 mb-2">
+            <div class="form-container pricing-card">
+                <h3>Sólo por Hora</h3>
+                <div class="price">$150/hr</div>
+                <p class="mb-1 mt-1">1 Adulto. Coworking + Wifi + Café</p>
+                <button class="btn-primary mt-1" onclick="selectPlan('SOLO_HORA', 150)">Seleccionar</button>
+            </div>
+            <div class="form-container pricing-card">
+                <h3>DAY Pass</h3>
+                <div class="price">$450/día</div>
+                <p class="mb-1 mt-1">1 Adulto + 1 Niño. Acceso completo.</p>
+                <button class="btn-primary mt-1" onclick="selectPlan('DAY_PASS', 450)">Seleccionar</button>
+            </div>
+            <div class="form-container pricing-card">
+                <h3>Workpass 40</h3>
+                <div class="price">$5,500</div>
+                <p class="mb-1 mt-1">40 horas. Válido por 30 días.</p>
+                <button class="btn-primary mt-1" onclick="selectPlan('WORKPASS_40', 5500)">Seleccionar</button>
+            </div>
+            <div class="form-container pricing-card">
+                <h3>Chispa 20</h3>
+                <div class="price">$6,500</div>
+                <p class="mb-1 mt-1">20 días acceso completo familiar.</p>
+                <button class="btn-primary mt-1" onclick="selectPlan('CHISPA_20', 6500)">Seleccionar</button>
+            </div>
+        </div>
+
+        <div id="step2" class="form-container" style="display: none; max-width: 600px; margin: 0 auto;">
+            <h2 class="section-title text-center" style="font-size: 1.5rem; margin-bottom: 2rem;">Registro de Datos</h2>
+            <form id="crmForm">
+                <div class="form-group">
+                    <label>Nombre del Adulto</label>
+                    <input type="text" id="nombre_adulto" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="email_adulto" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono de Emergencia</label>
+                    <input type="text" id="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre del Niño(a)</label>
+                    <input type="text" id="nombre_nino" required>
+                </div>
+                <div class="form-group">
+                    <label>Edad del Niño(a)</label>
+                    <input type="number" id="edad_nino" min="1" max="10" required>
+                </div>
+                <button type="button" class="btn-primary w-100" onclick="processRegistration()">Continuar al Pago</button>
+            </form>
+        </div>
+
+        <div id="step3" class="form-container text-center" style="display: none; max-width: 600px; margin: 0 auto;">
+            <h2 class="section-title text-center" style="font-size: 1.5rem; margin-bottom: 2rem;">Simulación de Pago</h2>
+            <p style="font-size: 1.1rem;">Plan seleccionado: <strong id="planName" style="color: var(--secondary-color);"></strong></p>
+            <p class="price mt-1" id="planPrice"></p>
+            <p class="mb-2" style="color: #666;"><small>Precios netos (IVA Incluido)</small></p>
+            <button class="btn-secondary w-100" onclick="simulatePayment()">Simular Pago Exitoso</button>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--mustard-bg); padding: 2rem 0; text-align: center; color: white; margin-top: auto;">
+        <div class="container">
+            <p>&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+    <script>
+        let currentPlan = '';
+        let currentPrice = 0;
+        let registeredUserId = '';
+
+        function selectPlan(plan, price) {
+            currentPlan = plan;
+            currentPrice = price;
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        }
+
+        async function processRegistration() {
+            const edad = parseInt(document.getElementById('edad_nino').value);
+            if (edad < 1 || edad > 10) {
+                alert('La ludoteca es solo para niños de 1 a 10 años.');
+                return;
+            }
+
+            const data = {
+                nombre_adulto: document.getElementById('nombre_adulto').value,
+                email_adulto: document.getElementById('email_adulto').value,
+                telefono_emergencia: document.getElementById('telefono').value,
+                nombre_nino: document.getElementById('nombre_nino').value,
+                edad_nino: edad,
+                tipo_pase_activo: currentPlan
+            };
+
+            try {
+                const res = await apiCall('/crm/register', 'POST', data);
+                registeredUserId = res.id_adulto;
+                localStorage.setItem('chispa_user_id', registeredUserId);
+                
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('planName').innerText = currentPlan.replace('_', ' ');
+                document.getElementById('planPrice').innerText = `$${currentPrice} MXN`;
+                document.getElementById('step3').style.display = 'block';
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+
+        function simulatePayment() {
+            alert('¡Pago procesado con éxito!');
+            window.location.href = '/agenda.html';
+        }
+    </script>
+</body>
+</html>
