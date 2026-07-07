@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresas - Chispa</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="header-left">
+                <a href="/">INICIO</a>
+                <a href="/checkout.html">MEMBRESÍAS</a>
+                <a href="/fiestas.html">PARTY CENTER</a>
+            </div>
+            <a href="/" class="logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo">
+            </a>
+            <div class="header-right">
+                <a href="/contacto.html">CONTACTO</a>
+                <a href="/cafeteria.html">CAFETERÍA</a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main container">
+        <div class="form-container text-center" style="max-width: 700px; margin: 0 auto;">
+            <h1 class="mb-1 section-title" style="margin-bottom: 1rem; font-size: 1.8rem; color: var(--primary-color);">Beneficios Corporativos</h1>
+            <p class="mb-2">Mejora el rendimiento y el bienestar de tus colaboradores ofreciendo acceso a Chispa.</p>
+            
+            <div class="grid-2 mb-2" style="text-align: left;">
+                <div class="form-container" style="background: var(--light-bg); border: 1px solid #eee; padding: 1.5rem;">
+                    <h4 style="font-family: var(--font-title); color: #333; margin-bottom: 0.5rem;">50-100 Membresías</h4>
+                    <p class="price" style="font-size: 1.5rem; color: var(--secondary-color);">10% Descuento</p>
+                </div>
+                <div class="form-container" style="background: var(--light-bg); border: 1px solid #eee; padding: 1.5rem;">
+                    <h4 style="font-family: var(--font-title); color: #333; margin-bottom: 0.5rem;">100-150 Membresías</h4>
+                    <p class="price" style="font-size: 1.5rem; color: var(--secondary-color);">15% Descuento</p>
+                </div>
+            </div>
+
+            <div style="text-align: left; background: var(--light-bg); padding: 2rem; border-radius: 12px; margin-top: 2rem;">
+                <h3 class="mb-1" style="color: #333;">Generar Código Corporativo</h3>
+                <form id="b2bForm">
+                    <div class="form-group">
+                        <label>Correo Electrónico (Director RRHH)</label>
+                        <input type="email" id="email" placeholder="nombre@empresa.com" required>
+                    </div>
+                    <button type="button" class="btn-primary w-100" onclick="registerCompany()">Obtener Código 15%</button>
+                </form>
+                
+                <div id="result" class="mt-2" style="display: none; padding: 1rem; background: #d4edda; color: #155724; border-radius: 10px; text-align: center;">
+                    <strong>¡Código Generado Exitosamente!</strong><br>
+                    <span id="codeDisplay" style="font-size: 1.5rem; font-weight: 800; display: block; margin-top: 0.5rem;"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--mustard-bg); padding: 2rem 0; text-align: center; color: white; margin-top: auto;">
+        <div class="container">
+            <p>&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+    <script>
+        async function registerCompany() {
+            const email = document.getElementById('email').value;
+            const domain = email.split('@')[1];
+            
+            if (!domain) {
+                alert('Ingresa un correo válido');
+                return;
+            }
+            
+            try {
+                const res = await apiCall(`/b2b/register?domain=${domain}`, 'POST');
+                document.getElementById('codeDisplay').innerText = res.discount_code;
+                document.getElementById('result').style.display = 'block';
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+    </script>
+</body>
+</html>

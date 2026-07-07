@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Chispa</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="header-left">
+                <a href="/">INICIO</a>
+                <a href="/checkout.html">MEMBRESÍAS</a>
+                <a href="/fiestas.html">PARTY CENTER</a>
+            </div>
+            <a href="/" class="logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo">
+            </a>
+            <div class="header-right">
+                <a href="/contacto.html">CONTACTO</a>
+                <a href="/cafeteria.html">CAFETERÍA</a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main container">
+        <div class="form-container" style="max-width: 600px; margin: 0 auto;">
+            <h2 class="text-center section-title" style="margin-bottom: 1rem; font-size: 1.5rem;">Agenda tu visita</h2>
+            <p class="text-center mb-2">Selecciona la fecha y hora de tu reserva.</p>
+            
+            <form id="agendaForm">
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <input type="date" id="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label>Bloque de Horario</label>
+                    <select id="horario" required>
+                        <option value="09:00-13:00">9:00 AM - 1:00 PM</option>
+                        <option value="14:00-18:00">2:00 PM - 6:00 PM</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-primary w-100" onclick="bookSlot()">Confirmar Horario</button>
+            </form>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--mustard-bg); padding: 2rem 0; text-align: center; color: white; margin-top: auto;">
+        <div class="container">
+            <p>&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+    <script>
+        document.getElementById('fecha').min = new Date().toISOString().split("T")[0];
+
+        async function bookSlot() {
+            const userId = localStorage.getItem('chispa_user_id');
+            if (!userId) {
+                alert('No se encontró información del usuario. Por favor realiza el flujo de compra.');
+                return window.location.href = '/checkout.html';
+            }
+
+            const fecha = document.getElementById('fecha').value;
+            const horario = document.getElementById('horario').value.split('-');
+
+            if (!fecha) {
+                alert('Selecciona una fecha');
+                return;
+            }
+
+            const data = {
+                id_adulto: userId,
+                fecha: fecha,
+                hora_inicio: horario[0],
+                hora_fin: horario[1]
+            };
+
+            try {
+                await apiCall('/booking/book', 'POST', data);
+                localStorage.setItem('chispa_last_booking', JSON.stringify(data));
+                window.location.href = '/ticket.html';
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+    </script>
+</body>
+</html>

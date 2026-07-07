@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Chispa</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="header-left">
+                <a href="/">INICIO</a>
+                <a href="/checkout.html">MEMBRESÍAS</a>
+                <a href="/fiestas.html">PARTY CENTER</a>
+            </div>
+            <a href="/" class="logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo">
+            </a>
+            <div class="header-right">
+                <a href="/contacto.html">CONTACTO</a>
+                <a href="/cafeteria.html">CAFETERÍA</a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main container">
+        <div class="form-container" style="max-width: 600px; margin: 0 auto;">
+            <h2 class="section-title text-center" style="font-size: 1.8rem; margin-bottom: 1rem;">Contáctanos</h2>
+            <p class="text-center mb-2">Déjanos un mensaje o encuéntranos en nuestras redes sociales.</p>
+            
+            <form id="contactForm" onsubmit="event.preventDefault(); alert('Mensaje enviado. ¡Nos pondremos en contacto pronto!');">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-family: var(--font-body); outline: none; min-height: 120px;" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-100 mt-1">Enviar Mensaje</button>
+            </form>
+            
+            <div class="text-center mt-2">
+                <p>También puedes llamarnos al:</p>
+                <p style="font-weight: bold; font-size: 1.2rem; margin-top: 0.5rem; color: var(--primary-color);">+52 55 1234 5678</p>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--mustard-bg); padding: 2rem 0; text-align: center; color: white; margin-top: auto;">
+        <div class="container">
+            <p>&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

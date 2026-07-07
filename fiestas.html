@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador Eventos - Allegra</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .addon-item { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="header-left">
+                <a href="/">INICIO</a>
+                <a href="/checkout.html">MEMBRESÍAS</a>
+                <a href="/fiestas.html">PARTY CENTER</a>
+            </div>
+            <a href="/" class="logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo">
+            </a>
+            <div class="header-right">
+                <a href="/contacto.html">CONTACTO</a>
+                <a href="/cafeteria.html">CAFETERÍA</a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main container">
+        <div class="form-container" style="max-width: 600px; margin: 0 auto;">
+            <h2 class="text-center mb-1 section-title" style="margin-bottom: 1rem; font-size: 1.5rem;">Cotizador Inteligente</h2>
+            <p class="text-center mb-2">Calcula el precio estimado de tu fiesta (Base 4 horas).</p>
+            
+            <form id="quoteForm">
+                <div class="form-group">
+                    <label>Capacidad del Salón</label>
+                    <select id="capacidad" onchange="calculate()">
+                        <option value="25">25 Personas ($15,000 base)</option>
+                        <option value="50">50 Personas ($25,000 base)</option>
+                        <option value="85">85 Personas ($35,000 base)</option>
+                    </select>
+                </div>
+                
+                <h4 class="mb-1 mt-2" style="color: var(--secondary-color);">Adicionales Premium</h4>
+                <div class="form-group" style="font-size: 0.95rem;">
+                    <label class="addon-item">
+                        <span><input type="checkbox" class="addon-cb" value="show_tematico" onchange="calculate()"> Show Temático</span>
+                        <span>+$5,000</span>
+                    </label>
+                    <label class="addon-item">
+                        <span><input type="checkbox" class="addon-cb" value="decoracion" onchange="calculate()"> Decoración Personalizada</span>
+                        <span>+$3,000</span>
+                    </label>
+                    <label class="addon-item">
+                        <span><input type="checkbox" class="addon-cb" value="carrito_monchis" onchange="calculate()"> Carrito Monchis</span>
+                        <span>+$2,500</span>
+                    </label>
+                    <label class="addon-item">
+                        <span><input type="checkbox" class="addon-cb" value="pastel_premium" onchange="calculate()"> Pastel Premium</span>
+                        <span>+$1,500</span>
+                    </label>
+                </div>
+                
+                <div class="mt-2 text-center" style="background: var(--light-bg); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="font-family: var(--font-title); font-size: 1.2rem; color: #333;">Total Estimado</h3>
+                    <div id="totalPrice" class="price">$15,000 MXN</div>
+                </div>
+                
+                <button type="button" class="btn-primary w-100 mt-2">Agendar Fecha (Anticipo)</button>
+            </form>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--mustard-bg); padding: 2rem 0; text-align: center; color: white; margin-top: auto;">
+        <div class="container">
+            <p>&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+    <script>
+        async function calculate() {
+            const capacidad = document.getElementById('capacidad').value;
+            const checkboxes = document.querySelectorAll('.addon-cb:checked');
+            const adicionales = Array.from(checkboxes).map(cb => cb.value);
+            
+            try {
+                const res = await apiCall('/events/quote', 'POST', {
+                    capacidad: parseInt(capacidad),
+                    adicionales: adicionales
+                });
+                
+                // Formatear precio
+                const formatted = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(res.total_cost);
+                document.getElementById('totalPrice').innerText = formatted;
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    </script>
+</body>
+</html>
