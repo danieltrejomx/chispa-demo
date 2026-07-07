@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Acceso - Chispa</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="header-left">
+                <a href="/">INICIO</a>
+                <a href="/checkout.html">MEMBRESÍAS</a>
+                <a href="/fiestas.html">PARTY CENTER</a>
+            </div>
+            <a href="/" class="logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo">
+            </a>
+            <div class="header-right">
+                <a href="/contacto.html">CONTACTO</a>
+                <a href="/cafeteria.html">CAFETERÍA</a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main container">
+        <div class="form-container text-center" style="max-width: 500px; margin: 0 auto;">
+            <h2 class="mb-1 section-title" style="margin-bottom: 1rem; font-size: 1.5rem; color: var(--secondary-color);">¡Reserva Confirmada!</h2>
+            
+            <div id="qrcode" style="display: flex; justify-content: center; margin: 2rem 0;"></div>
+            
+            <div id="resumen" class="mb-2" style="text-align: left; background: var(--light-bg); padding: 1rem; border-radius: 10px;">
+                <!-- Filled via JS -->
+            </div>
+
+            <div style="font-size: 0.9rem; text-align: left; background: #fff3cd; padding: 1rem; border-radius: 10px; color: #856404;">
+                <strong>Reglas de Seguridad Ludoteca:</strong>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li>No introducir alimentos externos.</li>
+                    <li>Uso de calcetines obligatorio.</li>
+                    <li>El adulto debe permanecer en las instalaciones.</li>
+                </ul>
+            </div>
+            
+            <a href="/" class="btn-primary mt-2">Volver al Inicio</a>
+        </div>
+    </main>
+
+    <footer style="background-color: var(--mustard-bg); padding: 2rem 0; text-align: center; color: white; margin-top: auto;">
+        <div class="container">
+            <p>&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const booking = JSON.parse(localStorage.getItem('chispa_last_booking') || '{}');
+        
+        if (booking.fecha) {
+            new QRCode(document.getElementById("qrcode"), {
+                text: JSON.stringify(booking),
+                width: 200,
+                height: 200,
+            });
+
+            document.getElementById('resumen').innerHTML = `
+                <p><strong>Fecha:</strong> ${booking.fecha}</p>
+                <p><strong>Horario:</strong> ${booking.hora_inicio} a ${booking.hora_fin}</p>
+                <p><strong>ID Cliente:</strong> ${booking.id_adulto.substring(0,8)}...</p>
+            `;
+        }
+    </script>
+</body>
+</html>
