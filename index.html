@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chispa Experience</title>
+    <title>Chispa Experience | Productividad y Diversión</title>
     <link rel="stylesheet" href="/static/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,7 +11,6 @@
     <header>
         <div class="container header-inner">
             <div class="header-left">
-                <a href="/">INICIO</a>
                 <a href="/checkout.html">MEMBRESÍAS</a>
                 <a href="/fiestas.html">PARTY CENTER</a>
             </div>
@@ -26,105 +25,281 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container hero-inner">
-            <div class="hero-text">
-                <h1>Un espacio donde productividad y bienestar familiar se encuentran</h1>
-                <p style="margin-bottom: 2rem;">¡Transforma tus celebraciones en experiencias inolvidables!</p>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/525500000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- 1. Hero Section (Ultra-conversión) -->
+    <section class="hero" style="background: linear-gradient(135deg, var(--beige-bg) 0%, #fff 100%); position: relative; overflow: hidden;">
+        <div class="container hero-inner" style="position: relative; z-index: 2;">
+            <div class="hero-text" style="padding-right: 2rem;">
+                <span style="background: var(--mustard-bg); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 1rem;">Coworking + Ludoteca</span>
+                <h1 style="font-size: 3.2rem; color: var(--secondary-color); line-height: 1.1; margin-bottom: 1.5rem;">Trabaja tranquila mientras ellos se divierten.</h1>
+                <p style="font-size: 1.15rem; color: #555; margin-bottom: 1.5rem; line-height: 1.6;">El único espacio en donde tú eres productiva y tus peques viven aventuras inolvidables de forma segura.</p>
+                
+                <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem;">
+                    <li style="margin-bottom: 0.8rem; font-weight: 600; color: #444; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Nanitas capacitadas</li>
+                    <li style="margin-bottom: 0.8rem; font-weight: 600; color: #444; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Internet de alta velocidad</li>
+                    <li style="font-weight: 600; color: #444; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Café ilimitado</li>
+                </ul>
+
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="/checkout.html" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem; background: var(--secondary-color);">Adquiere tu Membresía</a>
-                    <a href="/fiestas.html" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Aparta tu Fiesta</a>
+                    <a href="#pricing" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem; box-shadow: 0 4px 15px rgba(232, 61, 124, 0.4);">Reserva tu Day Pass</a>
+                    <a href="/fiestas.html" class="btn-secondary" style="font-size: 1.1rem; padding: 1rem 2rem; background: transparent; border: 2px solid var(--secondary-color); color: var(--secondary-color);">Fiestas Infantiles</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=500" alt="Hero Image" style="border-radius: 50% 50% 10% 50%; max-width: 400px; width: 100%;">
-                <div style="position: absolute; bottom: 10%; right: -20px; color: #D4E157; font-size: 5rem; line-height: 1;">
-                    <i class="fas fa-certificate"></i>
+            <div class="hero-image" style="position: relative; display: flex; justify-content: center; align-items: center;">
+                <div style="position: absolute; top: 10%; right: 10%; width: 150px; height: 150px; background: var(--mustard-bg); border-radius: 50%; opacity: 0.15; z-index: -1;"></div>
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600" alt="Mamá joven trabajando con bebé" style="border-radius: 24px; max-width: 380px; height: 450px; object-fit: cover; width: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 10px solid white; transform: rotate(2deg);">
+                <div style="position: absolute; bottom: 40px; left: -20px; background: white; padding: 0.8rem 1.2rem; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem; animation: float 3s ease-in-out infinite; z-index: 5;">
+                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.2rem;"></i>
+                    <div>
+                        <div style="font-weight: 800; color: var(--secondary-color); font-size: 0.95rem;">4.9/5</div>
+                        <div style="font-size: 0.75rem; color: #666;">Madres felices</div>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <style>
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+                100% { transform: translateY(0px); }
+            }
+        </style>
     </section>
 
-    <!-- New CTA Section -->
-    <section style="background: var(--primary-color); color: white; padding: 4rem 0;">
+    <!-- 2. Sección "Elige tu Pase" (Pricing Rápido) -->
+    <section id="pricing" style="background: white; padding: 5rem 0;">
         <div class="container text-center">
-            <h2 style="font-family: var(--font-title); font-size: 2.5rem; margin-bottom: 1rem;">¿Listos para una experiencia única?</h2>
-            <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 2rem;">Descubre nuestros planes de Coworking para que trabajes tranquilo mientras tus hijos se divierten seguros.</p>
-            <a href="/checkout.html" class="btn-secondary" style="background: white; color: var(--primary-color); font-size: 1.2rem; padding: 1rem 3rem;">Ver Pases y Membresías</a>
-        </div>
-    </section>
+            <h2 class="section-title" style="margin-bottom: 1rem;">Nuestros Pases y Membresías</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 3rem; color: #666;">Elige el plan que mejor se adapte a tu rutina. (Precio incluye acceso para 1 adulto + 1 niño)</p>
+            
+            <div class="grid-4-pricing">
+                <!-- Solo Hora -->
+                <div class="pricing-card">
+                    <h3>Solo 1 Hora</h3>
+                    <div class="price">$150<small>MXN</small></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1 hora de coworking</li>
+                        <li><i class="fas fa-check"></i> 1 hora de ludoteca</li>
+                        <li><i class="fas fa-check"></i> Internet de alta velocidad</li>
+                    </ul>
+                    <a href="/checkout.html?plan=hora" class="btn-secondary w-100">Seleccionar</a>
+                </div>
 
-    <section class="acerca-bg">
-        <div class="container">
-            <h2 class="section-title">Acerca de CHISPA</h2>
-            <div class="three-cols">
-                <div>
-                    <h3>Nuestra Misión</h3>
-                    <p>Creamos un espacio integral que une trabajo, juego y bienestar, pensado para mamás y papás que buscan equilibrio sin perder de vista lo más importante: su familia.</p>
+                <!-- Day Pass (Recomendado) -->
+                <div class="pricing-card popular-card">
+                    <div class="popular-badge">Más Popular</div>
+                    <h3>Day Pass</h3>
+                    <div class="price">$450<small>MXN</small></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <strong>Pase libre todo el día</strong></li>
+                        <li><i class="fas fa-check"></i> Cuidado especializado</li>
+                        <li><i class="fas fa-check"></i> Café americano refil</li>
+                        <li><i class="fas fa-check"></i> Acceso a áreas comunes</li>
+                    </ul>
+                    <a href="/checkout.html?plan=daypass" class="btn-primary w-100">Reserva tu Day Pass</a>
                 </div>
-                <div>
-                    <h3>Nuestro Equipo</h3>
-                    <p>Contamos con un equipo comprometido, conformado por profesionistas y personas capacitadas con experiencia, pasión y vocación de servicio.</p>
-                    <p style="margin-top: 1rem;">En CHISPA, cada sonrisa, cada detalle y cada momento importan.</p>
+
+                <!-- Chispa 20 -->
+                <div class="pricing-card">
+                    <h3>Chispa 20</h3>
+                    <div class="price">$2,500<small>MXN</small></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Paquete de 20 horas</li>
+                        <li><i class="fas fa-check"></i> Úsalas cuando quieras</li>
+                        <li><i class="fas fa-check"></i> Sin fecha de caducidad</li>
+                        <li><i class="fas fa-check"></i> 10% desc. en Cafetería</li>
+                    </ul>
+                    <a href="/checkout.html?plan=chispa20" class="btn-secondary w-100">Comprar Paquete</a>
                 </div>
-                <div>
-                    <h3>Servicios</h3>
-                    <p>Espacio boutique de coworking con ludoteca, en donde se pueden llevar a cabo talleres, cursos y pasar tiempo en familia. ¡Contamos con fiestas infantiles!</p>
+
+                <!-- Workpass 40 -->
+                <div class="pricing-card">
+                    <h3>Workpass 40</h3>
+                    <div class="price">$4,500<small>MXN</small></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Paquete de 40 horas</li>
+                        <li><i class="fas fa-check"></i> Máximo ahorro por hora</li>
+                        <li><i class="fas fa-check"></i> Prioridad de reserva</li>
+                        <li><i class="fas fa-check"></i> 15% desc. en Talleres</li>
+                    </ul>
+                    <a href="/checkout.html?plan=workpass40" class="btn-secondary w-100">Comprar Paquete</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 3. Servicios Claros y Visuales -->
     <section class="coworking-bg">
         <div class="container">
-            <h2 class="section-title">CO-WORKING & COMMUNITY</h2>
+            <h2 class="section-title">Nuestros Servicios</h2>
             <div class="three-cols">
                 <div class="service-card">
-                    <h4>Coworking & ludoteca</h4>
+                    <h4>Coworking + Ludoteca</h4>
                     <img src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=400" alt="Coworking">
                     <ul>
-                        <li>Diversión segura mientras tú trabajas tranquila.</li>
-                        <li>Ellos juegan, tú avanzas.</li>
-                        <li>Un lugar para aprender, crear y reír.</li>
+                        <li><i class="fas fa-wifi"></i> Wifi de alta velocidad</li>
+                        <li><i class="fas fa-child"></i> Nanitas capacitadas</li>
+                        <li><i class="fas fa-video"></i> Monitoreo CCTV</li>
                     </ul>
-                    <a href="/checkout.html" class="btn-primary w-100" style="margin-top: 1rem;">Comprar Pase</a>
+                    <a href="#pricing" class="btn-primary w-100" style="margin-top: 1rem;">Ver Pases</a>
                 </div>
                 <div class="service-card">
-                    <h4>Party Room</h4>
+                    <h4>Party Center</h4>
                     <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=400" alt="Party Room">
-                    <p>Celebra momentos que se quedarán en su memoria.</p>
-                    <a href="/fiestas.html" class="btn-primary w-100" style="margin-top: 1rem;">Cotiza tu Fiesta</a>
+                    <ul>
+                        <li><i class="fas fa-birthday-cake"></i> Fiestas infantiles temáticas</li>
+                        <li><i class="fas fa-user-friends"></i> Capacidad para 50 adultos</li>
+                        <li><i class="fas fa-concierge-bell"></i> Servicio completo de catering</li>
+                    </ul>
+                    <a href="/fiestas.html" class="btn-primary w-100" style="margin-top: 1rem; background: var(--secondary-color);">Cotizar Fiesta</a>
                 </div>
                 <div class="service-card">
-                    <h4>Workshops</h4>
-                    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&q=80&w=400" alt="Workshops">
-                    <p>Talleres para crecer, conectar y crear.</p>
-                    <a href="#" class="btn-primary w-100" style="margin-top: 1rem; background: #333;">Ver Calendario</a>
+                    <h4>Cafetería Premium</h4>
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=400" alt="Cafeteria">
+                    <ul>
+                        <li><i class="fas fa-coffee"></i> Café de especialidad</li>
+                        <li><i class="fas fa-cookie-bite"></i> Snacks saludables para peques</li>
+                        <li><i class="fas fa-tag"></i> Descuentos para miembros</li>
+                    </ul>
+                    <a href="/cafeteria.html" class="btn-secondary w-100" style="margin-top: 1rem;">Ver Menú</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact-bg">
-        <div class="container">
-            <h2 class="section-title">Contáctanos</h2>
-            <h4>¡Ven a visitarnos!</h4>
-            <p>Nos encantará recibirte a ti y a tus peques en cualquier momento durante las horas de oficina.</p>
-            <a href="/contacto.html" class="link-map">Ubicación</a>
+    <!-- 4. Calendario de Actividades -->
+    <section style="background: white; padding: 4rem 0;">
+        <div class="container text-center">
+            <h2 class="section-title">Talleres y Actividades</h2>
+            <p style="margin-bottom: 3rem; font-size: 1.1rem;">Además de juego libre, organizamos talleres diseñados para el desarrollo integral de tus pequeños.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">Lunes 4:00 PM</div>
+                    <div class="timeline-content">
+                        <h4>Estimulación Temprana (1-3 años)</h4>
+                        <p>Desarrollo motriz fino y grueso a través de juegos y música.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">Miércoles 5:00 PM</div>
+                    <div class="timeline-content">
+                        <h4>Pequeños Artistas (4-7 años)</h4>
+                        <p>Pintura, modelado y manualidades para despertar la creatividad.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">Viernes 4:30 PM</div>
+                    <div class="timeline-content">
+                        <h4>Mini Chef (5-10 años)</h4>
+                        <p>Aprenderán a preparar snacks saludables y divertidos sin usar fuego.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="/contacto.html" class="btn-primary mt-2">Inscribir a un Taller</a>
         </div>
     </section>
 
-    <section class="contact-bg" style="padding-top: 0;">
-        <div class="container">
-            <h2 class="section-title">Conéctate con nosotros</h2>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <!-- 5. Social Proof (Testimonios) -->
+    <section class="acerca-bg" style="padding: 5rem 0;">
+        <div class="container text-center">
+            <h2 class="section-title">Lo que dicen nuestras familias</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Es mi salvación los días que tengo juntas importantes. Mi hija ama la ludoteca y las nanitas son súper atentas. Yo me tomo un café y trabajo tranquila."</p>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mariana">
+                        <span>Mariana R. <br><small>Mamá emprendedora</small></span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Le celebramos los 5 años a mi hijo aquí y todo estuvo espectacular. El Party Center está hermoso, el servicio fue de primera y no me preocupé por nada."</p>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos">
+                        <span>Carlos T. <br><small>Papá de Leo</small></span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"El internet es rapidísimo y las sillas son muy cómodas. Compré el Workpass 40 y siento que me rinde muchísimo el tiempo. ¡Súper recomendado!"</p>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sofía">
+                        <span>Sofía M. <br><small>Freelancer</small></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- 6. Preguntas Frecuentes (FAQ Accordion) -->
+    <section style="background: white; padding: 5rem 0;">
+        <div class="container">
+            <h2 class="section-title text-center">Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">¿A partir de qué edad pueden entrar los niños a la ludoteca? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Aceptamos pequeños desde 1 año hasta 10 años. Nuestras áreas y actividades están diseñadas para ser seguras y divertidas en todo este rango de edades, con supervisión constante.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Qué horarios manejan en el Coworking? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Nuestro Coworking y ludoteca están abiertos de Lunes a Viernes de 9:00 AM a 7:00 PM, y Sábados de 9:00 AM a 2:00 PM. Los domingos están reservados exclusivamente para eventos privados y fiestas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Tengo que quedarme en el local mientras mi hijo está en la ludoteca? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Sí, Chispa es un espacio compartido. Los padres deben permanecer dentro de las instalaciones (en el área de coworking o cafetería) mientras sus hijos están en la ludoteca jugando.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Puedo ingresar alimentos o bebidas externas? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Por políticas de higiene y seguridad (alergias de otros niños), no se permite el ingreso de alimentos externos. Contamos con una cafetería muy completa con opciones deliciosas y saludables para toda la familia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer style="background-color: var(--mustard-bg); padding: 2rem 0; text-align: center; color: white; margin-top: auto;">
         <div class="container">
             <p>&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
+            <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; font-size: 1.5rem;">
+                <a href="#" style="color: white; text-decoration: none;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: white; text-decoration: none;"><i class="fab fa-facebook"></i></a>
+            </div>
         </div>
     </footer>
+
+    <!-- Script for FAQ Accordion -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Toggle current
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

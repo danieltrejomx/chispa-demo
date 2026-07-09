@@ -11,12 +11,11 @@
     <header>
         <div class="container header-inner">
             <div class="header-left">
-                <a href="/">INICIO</a>
                 <a href="/checkout.html">MEMBRESÍAS</a>
                 <a href="/fiestas.html">PARTY CENTER</a>
             </div>
             <a href="/" class="logo">
-                <img src="/static/logo.jpg" alt="Chispa Logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo" style="height: 120px; mix-blend-mode: multiply;">
             </a>
             <div class="header-right">
                 <a href="/contacto.html">CONTACTO</a>
@@ -27,32 +26,59 @@
     </header>
 
     <main class="page-main container">
-        <h1 class="section-title text-center">Membresías y Pases</h1>
+        <h1 class="section-title text-center">Elige tu Plan Ideal</h1>
         
-        <div id="step1" class="grid-2 mb-2">
-            <div class="form-container pricing-card">
-                <h3>Sólo por Hora</h3>
-                <div class="price">$150/hr</div>
-                <p class="mb-1 mt-1">1 Adulto. Coworking + Wifi + Café</p>
-                <button class="btn-primary mt-1" onclick="selectPlan('SOLO_HORA', 150)">Seleccionar</button>
+        <div id="step1" class="grid-4-pricing mb-2">
+            <!-- Solo Hora -->
+            <div class="pricing-card">
+                <h3>Sólo 1 Hora</h3>
+                <div class="price">$150<small>MXN</small></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> 1 hora de coworking</li>
+                    <li><i class="fas fa-check"></i> 1 hora de ludoteca</li>
+                    <li><i class="fas fa-check"></i> Internet de alta velocidad</li>
+                </ul>
+                <button class="btn-secondary w-100" onclick="selectPlan('SOLO_HORA', 150)">Seleccionar</button>
             </div>
-            <div class="form-container pricing-card">
-                <h3>DAY Pass</h3>
-                <div class="price">$450/día</div>
-                <p class="mb-1 mt-1">1 Adulto + 1 Niño. Acceso completo.</p>
-                <button class="btn-primary mt-1" onclick="selectPlan('DAY_PASS', 450)">Seleccionar</button>
+
+            <!-- Day Pass (Recomendado) -->
+            <div class="pricing-card popular-card">
+                <div class="popular-badge">Más Popular</div>
+                <h3>Day Pass</h3>
+                <div class="price">$450<small>MXN</small></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> <strong>Pase libre todo el día</strong></li>
+                    <li><i class="fas fa-check"></i> Cuidado especializado</li>
+                    <li><i class="fas fa-check"></i> Café americano refil</li>
+                    <li><i class="fas fa-check"></i> Acceso a áreas comunes</li>
+                </ul>
+                <button class="btn-primary w-100" onclick="selectPlan('DAY_PASS', 450)">Seleccionar Day Pass</button>
             </div>
-            <div class="form-container pricing-card">
-                <h3>Workpass 40</h3>
-                <div class="price">$5,500</div>
-                <p class="mb-1 mt-1">40 horas. Válido por 30 días.</p>
-                <button class="btn-primary mt-1" onclick="selectPlan('WORKPASS_40', 5500)">Seleccionar</button>
-            </div>
-            <div class="form-container pricing-card">
+
+            <!-- Chispa 20 -->
+            <div class="pricing-card">
                 <h3>Chispa 20</h3>
-                <div class="price">$6,500</div>
-                <p class="mb-1 mt-1">20 días acceso completo familiar.</p>
-                <button class="btn-primary mt-1" onclick="selectPlan('CHISPA_20', 6500)">Seleccionar</button>
+                <div class="price">$2,500<small>MXN</small></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Paquete de 20 horas</li>
+                    <li><i class="fas fa-check"></i> Úsalas cuando quieras</li>
+                    <li><i class="fas fa-check"></i> Sin fecha de caducidad</li>
+                    <li><i class="fas fa-check"></i> 10% desc. en Cafetería</li>
+                </ul>
+                <button class="btn-secondary w-100" onclick="selectPlan('CHISPA_20', 2500)">Comprar Paquete</button>
+            </div>
+
+            <!-- Workpass 40 -->
+            <div class="pricing-card">
+                <h3>Workpass 40</h3>
+                <div class="price">$4,500<small>MXN</small></div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Paquete de 40 horas</li>
+                    <li><i class="fas fa-check"></i> Máximo ahorro por hora</li>
+                    <li><i class="fas fa-check"></i> Prioridad de reserva</li>
+                    <li><i class="fas fa-check"></i> 15% desc. en Talleres</li>
+                </ul>
+                <button class="btn-secondary w-100" onclick="selectPlan('WORKPASS_40', 4500)">Comprar Paquete</button>
             </div>
         </div>
 
@@ -103,6 +129,18 @@
         let currentPlan = '';
         let currentPrice = 0;
         let registeredUserId = '';
+
+        // Added functionality to pre-select plan if URL parameter exists
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const planParam = urlParams.get('plan');
+            if (planParam) {
+                if (planParam === 'hora') selectPlan('SOLO_HORA', 150);
+                if (planParam === 'daypass') selectPlan('DAY_PASS', 450);
+                if (planParam === 'chispa20') selectPlan('CHISPA_20', 2500);
+                if (planParam === 'workpass40') selectPlan('WORKPASS_40', 4500);
+            }
+        };
 
         function selectPlan(plan, price) {
             currentPlan = plan;
