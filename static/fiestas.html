@@ -3,23 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotizador Eventos - Allegra</title>
+    <title>Party Center - Chispa Experience</title>
     <link rel="stylesheet" href="/static/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .addon-item { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .addon-item { display: flex; justify-content: space-between; margin-bottom: 0.5rem; align-items: center; border-bottom: 1px dashed #eee; padding-bottom: 0.3rem;}
+        .addon-item input { width: auto !important; margin-right: 8px; transform: scale(1.1);}
+        .fiestas-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=1200') center/cover;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .fiestas-hero h1 {
+            font-family: var(--font-title);
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .fiestas-hero p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .benefit-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .benefit-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+        .benefit-item h3 {
+            font-size: 1.1rem;
+        }
+        .benefit-item p {
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container header-inner">
             <div class="header-left">
-                <a href="/">INICIO</a>
                 <a href="/checkout.html">MEMBRESÍAS</a>
                 <a href="/fiestas.html">PARTY CENTER</a>
             </div>
             <a href="/" class="logo">
-                <img src="/static/logo.jpg" alt="Chispa Logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo" style="height: 120px; mix-blend-mode: multiply;">
             </a>
             <div class="header-right">
                 <a href="/contacto.html">CONTACTO</a>
@@ -29,54 +72,113 @@
         </div>
     </header>
 
-    <main class="page-main container">
-        <div class="form-container" style="max-width: 600px; margin: 0 auto;">
-            <h2 class="text-center mb-1 section-title" style="margin-bottom: 1rem; font-size: 1.5rem;">Cotizador Inteligente</h2>
-            <p class="text-center mb-2">Calcula el precio estimado de tu fiesta (Base 4 horas).</p>
-            
-            <form id="quoteForm">
-                <div class="form-group">
-                    <label>Capacidad del Salón</label>
-                    <select id="capacidad" onchange="calculate()">
-                        <option value="25">25 Personas ($15,000 base)</option>
-                        <option value="50">50 Personas ($25,000 base)</option>
-                        <option value="85">85 Personas ($35,000 base)</option>
-                    </select>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/525500000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="fiestas-hero">
+        <div class="container">
+            <h1>El Cumpleaños Perfecto</h1>
+            <p>Tú disfrutas, nosotros nos encargamos del resto. Celebra en un espacio mágico y seguro.</p>
+            <a href="#cotizador" class="btn-primary" style="font-size: 1rem; padding: 0.8rem 2rem; background: var(--primary-color);">Cotiza tu Fiesta Ahora</a>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section style="background: var(--light-bg); padding: 3rem 0;">
+        <div class="container">
+            <h2 class="section-title text-center" style="font-size: 1.8rem; margin-bottom: 1rem;">¿Qué incluye nuestro Party Center?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-clock"></i>
+                    <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">4 Horas de Evento</h3>
+                    <p>Tiempo ideal para jugar y partir el pastel.</p>
                 </div>
-                
-                <h4 class="mb-1 mt-2" style="color: var(--secondary-color);">Adicionales Premium</h4>
-                <div class="form-group" style="font-size: 0.95rem;">
-                    <label class="addon-item">
-                        <span><input type="checkbox" class="addon-cb" value="show_tematico" onchange="calculate()"> Show Temático</span>
-                        <span>+$5,000</span>
-                    </label>
-                    <label class="addon-item">
-                        <span><input type="checkbox" class="addon-cb" value="decoracion" onchange="calculate()"> Decoración Personalizada</span>
-                        <span>+$3,000</span>
-                    </label>
-                    <label class="addon-item">
-                        <span><input type="checkbox" class="addon-cb" value="carrito_monchis" onchange="calculate()"> Carrito Monchis</span>
-                        <span>+$2,500</span>
-                    </label>
-                    <label class="addon-item">
-                        <span><input type="checkbox" class="addon-cb" value="pastel_premium" onchange="calculate()"> Pastel Premium</span>
-                        <span>+$1,500</span>
-                    </label>
+                <div class="benefit-item">
+                    <i class="fas fa-child"></i>
+                    <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Nanitas Especializadas</h3>
+                    <p>Personal capacitado cuidando a los niños.</p>
                 </div>
-                
-                <div class="mt-2 text-center" style="background: var(--light-bg); padding: 1.5rem; border-radius: 10px;">
-                    <h3 style="font-family: var(--font-title); font-size: 1.2rem; color: #333;">Total Estimado</h3>
-                    <div id="totalPrice" class="price">$15,000 MXN</div>
+                <div class="benefit-item">
+                    <i class="fas fa-music"></i>
+                    <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Instalaciones Privadas</h3>
+                    <p>Ludoteca y área de mesas exclusivas.</p>
                 </div>
+                <div class="benefit-item">
+                    <i class="fas fa-broom"></i>
+                    <h3 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Limpieza y Staff</h3>
+                    <p>Montaje y limpieza incluidos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cotizador -->
+    <main id="cotizador" style="background: white; padding: 3rem 0;">
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;">
                 
-                <button type="button" class="btn-primary w-100 mt-2">Agendar Fecha (Anticipo)</button>
-            </form>
+                <!-- Info extra -->
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1rem; font-size: 1.8rem;">Arma tu Paquete</h2>
+                    <p style="font-size: 1rem; line-height: 1.5; margin-bottom: 1.5rem;">Utiliza nuestro cotizador inteligente para tener un estimado de tu evento. Puedes agregar servicios premium para hacer el día aún más especial.</p>
+                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=600" alt="Decoración de fiesta" style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                </div>
+
+                <!-- Formulario -->
+                <div class="form-container" style="flex: 1; min-width: 300px; border: 2px solid #eee; background: #fff; padding: 1.5rem;">
+                    <h2 class="text-center mb-1" style="font-family: var(--font-title); color: var(--secondary-color); font-size: 1.5rem; margin-bottom: 0.5rem;">Cotizador Inteligente</h2>
+                    <p class="text-center mb-2" style="color: #666; font-size: 0.9rem; margin-bottom: 1.5rem;">Precio estimado (Base 4 horas).</p>
+                    
+                    <form id="quoteForm">
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label style="font-size: 0.95rem; color: var(--primary-color); margin-bottom: 0.3rem;">1. Selecciona tu aforo</label>
+                            <select id="capacidad" onchange="calculate()" style="padding: 0.6rem; font-weight: 600; font-size: 0.95rem;">
+                                <option value="25">Hasta 25 Personas ($15,000 base)</option>
+                                <option value="50">Hasta 50 Personas ($25,000 base)</option>
+                                <option value="85">Hasta 85 Personas ($35,000 base)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group mt-1" style="margin-bottom: 1rem;">
+                            <label style="font-size: 0.95rem; color: var(--primary-color); margin-bottom: 0.5rem;">2. Extras mágicos (Opcional)</label>
+                            <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px;">
+                                <label class="addon-item">
+                                    <span style="font-size: 0.9rem;"><input type="checkbox" class="addon-cb" value="show_tematico" onchange="calculate()"> Show Temático</span>
+                                    <strong style="font-size: 0.9rem;">+$5,000</strong>
+                                </label>
+                                <label class="addon-item">
+                                    <span style="font-size: 0.9rem;"><input type="checkbox" class="addon-cb" value="decoracion" onchange="calculate()"> Decoración Pro</span>
+                                    <strong style="font-size: 0.9rem;">+$3,000</strong>
+                                </label>
+                                <label class="addon-item">
+                                    <span style="font-size: 0.9rem;"><input type="checkbox" class="addon-cb" value="carrito_monchis" onchange="calculate()"> Carrito Monchis</span>
+                                    <strong style="font-size: 0.9rem;">+$2,500</strong>
+                                </label>
+                                <label class="addon-item" style="border-bottom: none; padding-bottom: 0;">
+                                    <span style="font-size: 0.9rem;"><input type="checkbox" class="addon-cb" value="pastel_premium" onchange="calculate()"> Pastel Premium</span>
+                                    <strong style="font-size: 0.9rem;">+$1,500</strong>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-1 text-center" style="background: var(--secondary-color); color: white; padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
+                            <h3 style="font-family: var(--font-body); font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem; color: rgba(255,255,255,0.8);">Inversión Estimada</h3>
+                            <div id="totalPrice" style="font-family: var(--font-title); font-size: 2.2rem;">$15,000<small style="font-size: 0.9rem; font-family: var(--font-body); margin-left: 3px;">MXN</small></div>
+                        </div>
+                        
+                        <button type="button" class="btn-primary w-100 mt-1" style="font-size: 1rem; padding: 0.8rem; margin-top: 1rem;" onclick="alert('¡Gracias por cotizar! Te contactaremos por WhatsApp para agendar la fecha.')">Agendar Fecha por WhatsApp</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 
-    <footer style="background-color: var(--mustard-bg); padding: 2rem 0; text-align: center; color: white; margin-top: auto;">
+    <footer style="background-color: var(--mustard-bg); padding: 1.5rem 0; text-align: center; color: white; margin-top: auto;">
         <div class="container">
-            <p>&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
+            <p style="font-size: 0.9rem;">&copy; 2026 Chispa Experience. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -94,8 +196,8 @@
                 });
                 
                 // Formatear precio
-                const formatted = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(res.total_cost);
-                document.getElementById('totalPrice').innerText = formatted;
+                const formattedNumber = new Intl.NumberFormat('es-MX').format(res.total_cost);
+                document.getElementById('totalPrice').innerHTML = `$${formattedNumber}<small style="font-size: 0.9rem; font-family: var(--font-body); margin-left: 3px;">MXN</small>`;
             } catch (e) {
                 console.error(e);
             }

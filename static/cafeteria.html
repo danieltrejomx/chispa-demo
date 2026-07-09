@@ -3,20 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafetería - Chispa</title>
+    <title>Cafetería - Chispa Experience</title>
     <link rel="stylesheet" href="/static/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cafe-hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200') center/cover;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+        .cafe-hero h1 {
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .menu-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+        .menu-card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .menu-card-body {
+            padding: 2rem;
+        }
+        .menu-card h3 {
+            font-family: var(--font-title);
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 0.5rem;
+        }
+        .menu-item span {
+            font-weight: 600;
+            color: #333;
+        }
+        .menu-item small {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .discount-banner {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 4rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            box-shadow: 0 10px 20px rgba(232,61,124,0.2);
+        }
+        .discount-banner i {
+            font-size: 3rem;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: var(--light-bg);">
     <header>
         <div class="container header-inner">
             <div class="header-left">
-                <a href="/">INICIO</a>
                 <a href="/checkout.html">MEMBRESÍAS</a>
                 <a href="/fiestas.html">PARTY CENTER</a>
             </div>
             <a href="/" class="logo">
-                <img src="/static/logo.jpg" alt="Chispa Logo">
+                <img src="/static/logo.jpg" alt="Chispa Logo" style="height: 120px; mix-blend-mode: multiply;">
             </a>
             <div class="header-right">
                 <a href="/contacto.html">CONTACTO</a>
@@ -26,30 +105,113 @@
         </div>
     </header>
 
-    <main class="page-main container">
-        <h1 class="section-title text-center" style="margin-bottom: 2rem;">Cafetería Chispa</h1>
-        
-        <div class="grid-2">
-            <div class="form-container text-center">
-                <i class="fas fa-coffee" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                <h3 style="font-family: var(--font-title); color: var(--secondary-color); margin-bottom: 1rem;">Bebidas</h3>
-                <p>Café Americano Refill (Incluido en pases)</p>
-                <p>Cappuccino y Lattes</p>
-                <p>Tés e Infusiones</p>
-                <p>Bebidas Refrescantes</p>
-            </div>
-            <div class="form-container text-center">
-                <i class="fas fa-cookie-bite" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                <h3 style="font-family: var(--font-title); color: var(--secondary-color); margin-bottom: 1rem;">Snacks y Comida</h3>
-                <p>Panadería Dulce y Salada</p>
-                <p>Sándwiches y Bagels</p>
-                <p>Opciones Saludables</p>
-                <p>Menú Infantil</p>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/525500000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <section class="cafe-hero">
+        <div class="container">
+            <h1>Cafetería Chispa</h1>
+            <p style="font-size: 1.2rem; font-weight: 600; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Disfruta de café de especialidad y snacks saludables para toda la familia mientras trabajas o te relajas.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="discount-banner">
+            <i class="fas fa-tag"></i>
+            <div style="text-align: left;">
+                <h3 style="font-family: var(--font-title); font-size: 1.5rem; margin-bottom: 0.3rem;">¡Beneficios para Miembros!</h3>
+                <p>Todos nuestros planes incluyen <strong>Café Americano Refill</strong> gratis y hasta <strong>15% de descuento</strong> en todo el menú.</p>
             </div>
         </div>
+
+        <h2 class="section-title text-center">Nuestro Menú</h2>
         
-        <div class="text-center mt-2">
-            <p><em>Recuerda que con tus membresías y pases cuentas con descuentos exclusivos en nuestra barra.</em></p>
+        <div class="menu-grid mb-2">
+            <!-- Bebidas -->
+            <div class="menu-card">
+                <div class="menu-card-img" style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="menu-card-body">
+                    <h3><i class="fas fa-coffee"></i> Barra de Café</h3>
+                    <div class="menu-item">
+                        <span>Café Americano Refill</span>
+                        <small>Incluido</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Latte / Cappuccino</span>
+                        <small>$65</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Mocha / Caramel Macchiato</span>
+                        <small>$75</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Matcha Latte</span>
+                        <small>$80</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Tés e Infusiones Orgánicas</span>
+                        <small>$55</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alimentos -->
+            <div class="menu-card">
+                <div class="menu-card-img" style="background-image: url('https://images.unsplash.com/photo-1484723091791-c0d759fce6e4?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="menu-card-body">
+                    <h3><i class="fas fa-cookie-bite"></i> Snacks y Comida</h3>
+                    <div class="menu-item">
+                        <span>Sándwich de Pavo Premium</span>
+                        <small>$110</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Bagel de Salmón</span>
+                        <small>$145</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Bowl de Acaí y Frutos Rojos</span>
+                        <small>$120</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Croissant Mantequilla / Chocolatín</span>
+                        <small>$45</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Panqué Zanahoria Gluten Free</span>
+                        <small>$60</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menú Infantil -->
+            <div class="menu-card">
+                <div class="menu-card-img" style="background-image: url('https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="menu-card-body">
+                    <h3><i class="fas fa-child"></i> Menú Infantil</h3>
+                    <div class="menu-item">
+                        <span>Mini Hotcakes Divertidos</span>
+                        <small>$85</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Sándwich Estrella (Jamón y Queso)</span>
+                        <small>$70</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Vasito de Fruta de Temporada</span>
+                        <small>$45</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Juguito Orgánico / Lechita</span>
+                        <small>$35</small>
+                    </div>
+                    <div class="menu-item">
+                        <span>Galleta Chispas de Chocolate</span>
+                        <small>$25</small>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
