@@ -11,6 +11,7 @@
     <header>
         <div class="container header-inner">
             <div class="header-left">
+                <a href="/" class="active">INICIO</a>
                 <a href="/checkout.html">MEMBRESÍAS</a>
                 <a href="/fiestas.html">PARTY CENTER</a>
             </div>
@@ -30,45 +31,56 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- 1. Hero Section (Ultra-conversión) -->
-    <section class="hero" style="background: linear-gradient(135deg, var(--beige-bg) 0%, #fff 100%); position: relative; overflow: hidden;">
-        <div class="container hero-inner" style="position: relative; z-index: 2;">
-            <div class="hero-text" style="padding-right: 2rem;">
-                <span style="background: var(--mustard-bg); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 1rem;">Coworking + Ludoteca</span>
-                <h1 style="font-size: 3.2rem; color: var(--secondary-color); line-height: 1.1; margin-bottom: 1.5rem;">Trabaja tranquila mientras ellos se divierten.</h1>
-                <p style="font-size: 1.15rem; color: #555; margin-bottom: 1.5rem; line-height: 1.6;">El único espacio en donde tú eres productiva y tus peques viven aventuras inolvidables de forma segura.</p>
-                
-                <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem;">
-                    <li style="margin-bottom: 0.8rem; font-weight: 600; color: #444; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Nanitas capacitadas</li>
-                    <li style="margin-bottom: 0.8rem; font-weight: 600; color: #444; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Internet de alta velocidad</li>
-                    <li style="font-weight: 600; color: #444; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Café ilimitado</li>
-                </ul>
-
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#pricing" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem; box-shadow: 0 4px 15px rgba(232, 61, 124, 0.4);">Reserva tu Day Pass</a>
-                    <a href="/fiestas.html" class="btn-secondary" style="font-size: 1.1rem; padding: 1rem 2rem; background: transparent; border: 2px solid var(--secondary-color); color: var(--secondary-color);">Fiestas Infantiles</a>
+    <!-- 1. Hero Section (Orgánico y Divertido) -->
+    <section class="hero" style="background-color: var(--beige-bg); position: relative; overflow: hidden; padding: 6rem 0;">
+        <!-- Elemento de fondo amarillo suave detrás del título -->
+        <div style="position: absolute; top: -50px; left: 10%; width: 300px; height: 200px; background-color: rgba(201, 186, 144, 0.2); border-radius: 50% 30% 70% 40%; z-index: 1;"></div>
+        
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                <!-- Left Side: Title and Bottom Images -->
+                <div style="display: flex; flex-direction: column; gap: 4rem;">
+                    <!-- Title -->
+                    <div style="padding-left: 2rem; text-align: center;">
+                        <h1 class="squiggle-text" style="font-family: var(--font-title); font-size: 5rem; color: var(--secondary-color); font-weight: 500; letter-spacing: -1px; margin: 0;">CO-WORKING</h1>
+                    </div>
+                    
+                    <!-- Bottom Images -->
+                    <div style="display: flex; gap: 2rem; justify-content: center;">
+                        <div style="width: 220px; height: 220px;">
+                            <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&q=80&w=400" alt="Niños jugando" class="scalloped-img" style="filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));">
+                        </div>
+                        <div style="width: 220px; height: 220px; margin-top: -40px;">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400" alt="Trabajando" class="scalloped-img" style="filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image" style="position: relative; display: flex; justify-content: center; align-items: center;">
-                <div style="position: absolute; top: 10%; right: 10%; width: 150px; height: 150px; background: var(--mustard-bg); border-radius: 50%; opacity: 0.15; z-index: -1;"></div>
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600" alt="Mamá joven trabajando con bebé" style="border-radius: 24px; max-width: 380px; height: 450px; object-fit: cover; width: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 10px solid white; transform: rotate(2deg);">
-                <div style="position: absolute; bottom: 40px; left: -20px; background: white; padding: 0.8rem 1.2rem; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem; animation: float 3s ease-in-out infinite; z-index: 5;">
-                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.2rem;"></i>
-                    <div>
-                        <div style="font-weight: 800; color: var(--secondary-color); font-size: 0.95rem;">4.9/5</div>
-                        <div style="font-size: 0.75rem; color: #666;">Madres felices</div>
+
+                <!-- Right Side: Top Images and Text -->
+                <div style="display: flex; flex-direction: column; gap: 3rem;">
+                    <!-- Top Images -->
+                    <div style="display: flex; gap: 2rem; justify-content: center;">
+                        <div style="width: 220px; height: 220px; margin-top: -30px;">
+                            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=400" alt="Café" class="scalloped-img" style="filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));">
+                        </div>
+                        <div style="width: 220px; height: 220px; margin-top: 30px;">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=400" alt="Interior" class="scalloped-img" style="filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));">
+                        </div>
+                    </div>
+                    
+                    <!-- Text -->
+                    <div style="padding-left: 2rem; max-width: 400px; align-self: center;">
+                        <h3 style="font-family: var(--font-body); font-weight: 800; color: var(--secondary-color); font-size: 1.5rem; margin-bottom: 1rem; text-transform: uppercase;">CHISPA EXPERIENCE</h3>
+                        <p style="font-size: 1.25rem; line-height: 1.6; color: #4A4A4A; font-weight: 400;">Un espacio que conecta mujeres, negocios y diversión con planes que se adaptan a tus necesidades.</p>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <style>
-            @keyframes float {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-10px); }
-                100% { transform: translateY(0px); }
-            }
-        </style>
+    </section>
+
+    <!-- MEMBRESÍAS SOLID BLUE BANNER -->
+    <section class="blue-banner" id="membresias-banner">
+        <h2>MEMBRESÍAS</h2>
     </section>
 
     <!-- 2. Sección "Elige tu Pase" (Pricing Rápido) -->
