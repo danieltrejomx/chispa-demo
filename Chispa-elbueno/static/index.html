@@ -9,137 +9,180 @@
 </head>
 <body>
     <header>
-        <div class="container header-inner">
-            <div class="header-left">
-                <a href="/" class="active">INICIO</a>
-                <a href="/checkout.html">MEMBRESÍAS</a>
-                <a href="/fiestas.html">PARTY CENTER</a>
+        <div class="container header-inner" style="justify-content: space-between;">
+            <div class="header-left" style="gap: 2.5rem;">
+                <a href="/checkout.html" style="text-transform: none;">Membresías</a>
+                <a href="/fiestas.html" style="text-transform: none;">Party Center</a>
             </div>
             <a href="/" class="logo">
-                <img src="/static/logo.jpg" alt="Chispa Logo" style="height: 120px; mix-blend-mode: multiply;">
+                <img src="/static/logo.jpg" alt="Chispa Logo" style="height: 70px; mix-blend-mode: multiply;">
             </a>
-            <div class="header-right">
-                <a href="/contacto.html">CONTACTO</a>
-                <a href="/cafeteria.html">CAFETERÍA</a>
+            <div class="header-right" style="gap: 2.5rem;">
+                <a href="/contacto.html" style="text-transform: none;">Contacto</a>
+                <a href="/cafeteria.html" style="text-transform: none;">Cafetería</a>
                 <a href="#"><i class="fas fa-user"></i></a>
             </div>
         </div>
     </header>
+
+    <div id="planModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePlanModal()">&times;</span>
+            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase;">Estás interesado en:</h3>
+            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 1rem;">[Nombre del Plan]</h2>
+            <div id="modalPlanSummary" style="text-align: left; margin-bottom: 1.5rem; background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 0.9rem;">
+                <ul class="plan-features" style="margin-bottom: 0;"></ul>
+            </div>
+            
+            <p style="margin-bottom: 1.5rem; color: #555; font-size: 0.9rem;">Déjanos tus datos para enviarte más información por WhatsApp.</p>
+            
+            <form id="planForm" onsubmit="sendToWhatsApp(event)">
+                <div style="margin-bottom: 1rem; text-align: left;">
+                    <label for="userName" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color);">Nombre completo:</label>
+                    <input type="text" id="userName" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
+                </div>
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="userDuda" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color);">¿Tienes alguna duda en especial?</label>
+                    <textarea id="userDuda" rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;"></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-100" style="display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #25D366; color: white; border: none; font-size: 1.1rem; padding: 0.8rem;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> Enviar por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/525500000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- 1. Hero Section (Orgánico y Divertido) -->
-    <section class="hero" style="background-color: var(--beige-bg); position: relative; overflow: hidden; padding: 6rem 0;">
+    <!-- 1. Hero Section (Orgánico y Divertido con Galería) -->
+    <section class="hero" style="background-color: var(--beige-bg); position: relative; overflow: hidden; padding: 3rem 0;">
         <!-- Elemento de fondo amarillo suave detrás del título -->
         <div style="position: absolute; top: -50px; left: 10%; width: 300px; height: 200px; background-color: rgba(201, 186, 144, 0.2); border-radius: 50% 30% 70% 40%; z-index: 1;"></div>
         
         <div class="container" style="position: relative; z-index: 2;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
-                <!-- Left Side: Title and Bottom Images -->
-                <div style="display: flex; flex-direction: column; gap: 4rem;">
-                    <!-- Title -->
-                    <div style="padding-left: 2rem; text-align: center;">
-                        <h1 class="squiggle-text" style="font-family: var(--font-title); font-size: 5rem; color: var(--secondary-color); font-weight: 500; letter-spacing: -1px; margin: 0;">CO-WORKING</h1>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                
+                <!-- Left Side: Texts -->
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; padding-left: 0; text-align: center; align-items: center;">
+                    <div>
+                        <h1 style="font-family: var(--font-title); font-size: 3.4rem; color: var(--secondary-color); line-height: 1.2; margin: 0; font-weight: 400;">
+                            Un espacio donde <br>
+                            <span class="marker-highlight" id="dynamic-word">productividad</span> <br>
+                            y bienestar familiar <br>
+                            se encuentran
+                        </h1>
                     </div>
-                    
-                    <!-- Bottom Images -->
-                    <div style="display: flex; gap: 2rem; justify-content: center;">
-                        <div style="width: 220px; height: 220px;">
-                            <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&q=80&w=400" alt="Niños jugando" class="scalloped-img" style="filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));">
-                        </div>
-                        <div style="width: 220px; height: 220px; margin-top: -40px;">
-                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400" alt="Trabajando" class="scalloped-img" style="filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));">
-                        </div>
+                    <div>
+                        <p style="font-size: 1.15rem; line-height: 1.6; color: #4A4A4A; font-weight: 400; margin-top: 1rem; max-width: 90%;">
+                            ¡Transforma tus días de trabajo y celebraciones infantiles en experiencias inolvidables!
+                        </p>
+                    </div>
+                    <div style="margin-top: 0.5rem;">
+                        <a href="#membresias-banner" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem; box-shadow: 0 4px 15px rgba(212, 121, 107, 0.4);">Ver Pases</a>
                     </div>
                 </div>
 
-                <!-- Right Side: Top Images and Text -->
-                <div style="display: flex; flex-direction: column; gap: 3rem;">
-                    <!-- Top Images -->
-                    <div style="display: flex; gap: 2rem; justify-content: center;">
-                        <div style="width: 220px; height: 220px; margin-top: -30px;">
-                            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=400" alt="Café" class="scalloped-img" style="filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));">
-                        </div>
-                        <div style="width: 220px; height: 220px; margin-top: 30px;">
-                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=400" alt="Interior" class="scalloped-img" style="filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));">
-                        </div>
-                    </div>
-                    
-                    <!-- Text -->
-                    <div style="padding-left: 2rem; max-width: 400px; align-self: center;">
-                        <h3 style="font-family: var(--font-body); font-weight: 800; color: var(--secondary-color); font-size: 1.5rem; margin-bottom: 1rem; text-transform: uppercase;">CHISPA EXPERIENCE</h3>
-                        <p style="font-size: 1.25rem; line-height: 1.6; color: #4A4A4A; font-weight: 400;">Un espacio que conecta mujeres, negocios y diversión con planes que se adaptan a tus necesidades.</p>
+                <!-- Right Side: Dynamic Gallery -->
+                <div class="hero-gallery-container" style="position: relative; width: 100%; height: 380px; display: flex; justify-content: center; align-items: center;">
+                    <div class="gallery-wrapper">
+                        <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&q=80&w=600" alt="Kids playing" class="circular-img gallery-slide">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600" alt="Laptop working" class="circular-img gallery-slide">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=600" alt="Coffee" class="circular-img gallery-slide">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600" alt="Interior" class="circular-img gallery-slide">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600" alt="Women meeting" class="circular-img gallery-slide">
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
 
     <!-- MEMBRESÍAS SOLID BLUE BANNER -->
-    <section class="blue-banner" id="membresias-banner">
-        <h2>MEMBRESÍAS</h2>
-    </section>
-
-    <!-- 2. Sección "Elige tu Pase" (Pricing Rápido) -->
-    <section id="pricing" style="background: white; padding: 5rem 0;">
-        <div class="container text-center">
-            <h2 class="section-title" style="margin-bottom: 1rem;">Nuestros Pases y Membresías</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 3rem; color: #666;">Elige el plan que mejor se adapte a tu rutina. (Precio incluye acceso para 1 adulto + 1 niño)</p>
+    <!-- MEMBRESÍAS SOLID BLUE BANNER -->
+    <!-- MEMBRESÍAS SOLID BLUE BANNER -->
+    <!-- MEMBRESÍAS SOLID BLUE BANNER -->
+    <section class="blue-banner" id="membresias-banner" style="padding: 5rem 0;">
+        <div class="container text-center" style="max-width: 1400px;">
+            <h2 style="margin-bottom: 0;">MEMBRESÍAS</h2>
+            <p style="font-size: 1.3rem; margin-top: 1rem; margin-bottom: 4rem; font-weight: 400; color: white;">Servicios incluidos en todas las membresías</p>
             
-            <div class="grid-4-pricing">
-                <!-- Solo Hora -->
-                <div class="pricing-card">
-                    <h3>Solo 1 Hora</h3>
-                    <div class="price">$150<small>MXN</small></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 1 hora de coworking</li>
-                        <li><i class="fas fa-check"></i> 1 hora de ludoteca</li>
-                        <li><i class="fas fa-check"></i> Internet de alta velocidad</li>
-                    </ul>
-                    <a href="/checkout.html?plan=hora" class="btn-secondary w-100">Seleccionar</a>
+            <div class="plans-grid">
+                <!-- DAY PASS -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>DAY PASS</h3>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Acceso a coworking, ludoteca y cafetería durante todo el día.</li>
+                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
+                            <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
+                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
+                            <li><i class="fas fa-check"></i> Acceso a talleres.</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'DAY PASS')">Seleccionar</button>
+                    </div>
                 </div>
 
-                <!-- Day Pass (Recomendado) -->
-                <div class="pricing-card popular-card">
-                    <div class="popular-badge">Más Popular</div>
-                    <h3>Day Pass</h3>
-                    <div class="price">$450<small>MXN</small></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> <strong>Pase libre todo el día</strong></li>
-                        <li><i class="fas fa-check"></i> Cuidado especializado</li>
-                        <li><i class="fas fa-check"></i> Café americano refil</li>
-                        <li><i class="fas fa-check"></i> Acceso a áreas comunes</li>
-                    </ul>
-                    <a href="/checkout.html?plan=daypass" class="btn-primary w-100">Reserva tu Day Pass</a>
+                <!-- PASE 5 DÍAS -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>PASE 5 DÍAS</h3>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Acceso a coworking, ludoteca y cafetería durante todo el día.</li>
+                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
+                            <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
+                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
+                            <li><i class="fas fa-check"></i> Acceso a talleres.</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'PASE 5 DÍAS')">Seleccionar</button>
+                    </div>
                 </div>
 
-                <!-- Chispa 20 -->
-                <div class="pricing-card">
-                    <h3>Chispa 20</h3>
-                    <div class="price">$2,500<small>MXN</small></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Paquete de 20 horas</li>
-                        <li><i class="fas fa-check"></i> Úsalas cuando quieras</li>
-                        <li><i class="fas fa-check"></i> Sin fecha de caducidad</li>
-                        <li><i class="fas fa-check"></i> 10% desc. en Cafetería</li>
-                    </ul>
-                    <a href="/checkout.html?plan=chispa20" class="btn-secondary w-100">Comprar Paquete</a>
+                <!-- CHISPA EXPERIENCE (Destacado) -->
+                <div class="plan-card highlighted-plan">
+                    <div class="popular-badge">EL MÁS COMPLETO</div>
+                    <div class="plan-header">
+                        <h3>CHISPA EXPERIENCE</h3>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Acceso ilimitado durante el mes.</li>
+                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
+                            <li><i class="fas fa-check"></i> Servicio de niñeras.</li>
+                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
+                            <li><i class="fas fa-check"></i> Descuentos en celebraciones.</li>
+                            <li><i class="fas fa-check"></i> Eventos exclusivos para miembros.</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE')">Seleccionar</button>
+                    </div>
                 </div>
 
-                <!-- Workpass 40 -->
-                <div class="pricing-card">
-                    <h3>Workpass 40</h3>
-                    <div class="price">$4,500<small>MXN</small></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Paquete de 40 horas</li>
-                        <li><i class="fas fa-check"></i> Máximo ahorro por hora</li>
-                        <li><i class="fas fa-check"></i> Prioridad de reserva</li>
-                        <li><i class="fas fa-check"></i> 15% desc. en Talleres</li>
-                    </ul>
-                    <a href="/checkout.html?plan=workpass40" class="btn-secondary w-100">Comprar Paquete</a>
+                <!-- MEMBRESÍAS CORPORATIVAS -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>CORPORATIVAS</h3>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Paquetes personalizados para empresas.</li>
+                            <li><i class="fas fa-check"></i> Diseñamos el plan ideal para tu equipo.</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="btn-secondary w-100" style="border: none;" onclick="openPlanModal(this, 'MEMBRESÍAS CORPORATIVAS')">Contactar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -294,8 +337,24 @@
         </div>
     </footer>
 
-    <!-- Script for FAQ Accordion -->
     <script>
+        // Hero Dynamic Word
+        const dynamicWord = document.getElementById('dynamic-word');
+        if (dynamicWord) {
+            const words = ['productividad', 'comunidad', 'diversión'];
+            let wordIndex = 0;
+            
+            setInterval(() => {
+                dynamicWord.style.opacity = 0;
+                setTimeout(() => {
+                    wordIndex = (wordIndex + 1) % words.length;
+                    dynamicWord.textContent = words[wordIndex];
+                    dynamicWord.style.opacity = 1;
+                }, 300);
+            }, 3500);
+        }
+
+        // Script for FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
@@ -313,5 +372,6 @@
             });
         });
     </script>
+    <script src="/static/app.js"></script>
 </body>
 </html>
