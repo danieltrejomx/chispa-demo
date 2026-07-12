@@ -60,7 +60,7 @@ function sendToWhatsApp(event) {
         message += `\nMi duda es: ${userDuda}`;
     }
     
-    const phone = '525500000000'; // Número base
+    const phone = '525587989223'; // Número base
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     
     window.open(url, '_blank');
