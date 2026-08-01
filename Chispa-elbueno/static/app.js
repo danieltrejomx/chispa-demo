@@ -19,13 +19,22 @@ async function apiCall(endpoint, method = 'GET', body = null) {
 }
 
 // Modal Functions
-function openPlanModal(button, planName) {
+function openPlanModal(button, planName, price) {
     const modal = document.getElementById('planModal');
     const title = document.getElementById('modalPlanName');
+    const priceEl = document.getElementById('modalPlanPrice');
     const summaryContainer = document.querySelector('#modalPlanSummary .plan-features');
     
     if (modal && title) {
         title.innerText = planName;
+        if (priceEl && price !== undefined) {
+            priceEl.innerText = `$${price.toLocaleString('es-MX')} MXN`;
+        }
+        
+        const planForm = document.getElementById('planForm');
+        const paymentSuccess = document.getElementById('paymentSuccess');
+        if(planForm) planForm.style.display = 'block';
+        if(paymentSuccess) paymentSuccess.style.display = 'none';
         
         // Copiar las características del plan seleccionado
         if (summaryContainer && button) {
@@ -49,22 +58,22 @@ function closePlanModal() {
     }
 }
 
-function sendToWhatsApp(event) {
+function processPayment(event) {
     event.preventDefault();
-    const planName = document.getElementById('modalPlanName').innerText;
-    const userName = document.getElementById('userName').value;
-    const userDuda = document.getElementById('userDuda').value;
+    const btn = document.getElementById('payButton');
+    if (!btn) return;
     
-    let message = `Hola, soy ${userName}. Me interesa el plan *${planName}*.`;
-    if (userDuda) {
-        message += `\nMi duda es: ${userDuda}`;
-    }
+    const originalText = btn.innerHTML;
     
-    const phone = '525587989223'; // Número base
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Procesando...';
+    btn.disabled = true;
     
-    window.open(url, '_blank');
-    closePlanModal();
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.getElementById('planForm').style.display = 'none';
+        document.getElementById('paymentSuccess').style.display = 'block';
+    }, 2000);
 }
 
 window.onclick = function(event) {

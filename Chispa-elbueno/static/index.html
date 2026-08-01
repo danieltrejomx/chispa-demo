@@ -26,29 +26,58 @@
     </header>
 
     <div id="planModal" class="modal-overlay">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 500px;">
             <span class="close-modal" onclick="closePlanModal()">&times;</span>
-            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase;">Estás interesado en:</h3>
-            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 1rem;">[Nombre del Plan]</h2>
+            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase;">Checkout</h3>
+            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 0.5rem;">[Nombre del Plan]</h2>
+            <p id="modalPlanPrice" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; color: var(--dark-color);">$0.00 MXN</p>
+            
             <div id="modalPlanSummary" style="text-align: left; margin-bottom: 1.5rem; background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 0.9rem;">
+                <div id="modalPlanDetails" style="margin-bottom: 1rem; color: #555;"></div>
+                <p style="font-weight: bold; margin-bottom: 0.5rem; color: #333;">Beneficios incluidos:</p>
                 <ul class="plan-features" style="margin-bottom: 0;"></ul>
             </div>
             
-            <p style="margin-bottom: 1.5rem; color: #555; font-size: 0.9rem;">Déjanos tus datos para enviarte más información por WhatsApp.</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 1.5rem;">
+            <h4 style="text-align: left; margin-bottom: 1rem;">Datos de Contacto</h4>
             
-            <form id="planForm" onsubmit="sendToWhatsApp(event)">
+            <form id="planForm" onsubmit="processPayment(event)">
                 <div style="margin-bottom: 1rem; text-align: left;">
-                    <label for="userName" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color);">Nombre completo:</label>
+                    <label for="userName" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Nombre completo:</label>
                     <input type="text" id="userName" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
                 </div>
                 <div style="margin-bottom: 1.5rem; text-align: left;">
-                    <label for="userDuda" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color);">¿Tienes alguna duda en especial?</label>
-                    <textarea id="userDuda" rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;"></textarea>
+                    <label for="userEmail" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Correo electrónico:</label>
+                    <input type="email" id="userEmail" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
                 </div>
-                <button type="submit" class="btn-primary w-100" style="display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #25D366; color: white; border: none; font-size: 1.1rem; padding: 0.8rem;">
-                    <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> Enviar por WhatsApp
+                
+                <h4 style="text-align: left; margin-bottom: 1rem;">Método de Pago <i class="fab fa-cc-visa" style="color: #1a1f71;"></i> <i class="fab fa-cc-mastercard" style="color: #eb001b;"></i></h4>
+                
+                <div style="margin-bottom: 1rem; text-align: left;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Número de tarjeta:</label>
+                    <input type="text" placeholder="0000 0000 0000 0000" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
+                </div>
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; text-align: left;">
+                    <div style="flex: 1;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Vencimiento:</label>
+                        <input type="text" placeholder="MM/YY" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">CVC:</label>
+                        <input type="text" placeholder="123" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
+                    </div>
+                </div>
+                
+                <button type="submit" id="payButton" class="btn-primary w-100" style="display: flex; align-items: center; justify-content: center; gap: 10px; border: none; font-size: 1.1rem; padding: 1rem;">
+                    <i class="fas fa-lock"></i> Pagar Seguro
                 </button>
             </form>
+            
+            <div id="paymentSuccess" style="display: none; text-align: center; padding: 2rem 0;">
+                <i class="fas fa-check-circle" style="color: #25D366; font-size: 4rem; margin-bottom: 1rem;"></i>
+                <h3>¡Pago Exitoso!</h3>
+                <p style="color: #666; margin-top: 0.5rem;">Hemos enviado tu recibo por correo. ¡Te esperamos en Chispa Experience!</p>
+            </div>
         </div>
     </div>
 
@@ -88,13 +117,10 @@
                 <!-- Right Side: Dynamic Gallery -->
                 <div class="hero-gallery-container" style="position: relative; width: 100%; height: 380px; display: flex; justify-content: center; align-items: center;">
                     <div class="gallery-wrapper">
-                        <img src="/static/images/galeria/copia_de_dsc00005.webp" alt="Chispa Experience 1" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/copia_de_img-202606032.webp" alt="Chispa Experience 2" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/copia_de_img-202606037.webp" alt="Chispa Experience 3" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/img_8572_2.webp" alt="Chispa Experience 4" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/img_8575.webp" alt="Chispa Experience 5" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/img_8576.webp" alt="Chispa Experience 6" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/img_8644.webp" alt="Chispa Experience 7" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/galeria1.jpg" alt="Chispa Experience 1" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/galeria2.jpg" alt="Chispa Experience 2" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/galeria2.jpg" alt="Chispa Experience 3" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/galeria2.jpg" alt="Chispa Experience 4" class="circular-img gallery-slide">
                     </div>
                 </div>
                 
@@ -109,20 +135,26 @@
     <!-- Marquee Gallery -->
     <div class="marquee-container">
         <div class="marquee-track">
-            <!-- Original set -->
-            <img src="/static/images/galeria/img_8576.webp" class="marquee-img">
-            <img src="/static/images/galeria/img_8575.webp" class="marquee-img">
-            <img src="/static/images/galeria/img_8572_2.webp" class="marquee-img">
-            <img src="/static/images/galeria/img_8644.webp" class="marquee-img">
-            <img src="/static/images/galeria/copia_de_img-202606037.webp" class="marquee-img">
-            <img src="/static/images/galeria/copia_de_img-202606032.webp" class="marquee-img">
-            <!-- Duplicate set for infinite loop -->
-            <img src="/static/images/galeria/img_8576.webp" class="marquee-img">
-            <img src="/static/images/galeria/img_8575.webp" class="marquee-img">
-            <img src="/static/images/galeria/img_8572_2.webp" class="marquee-img">
-            <img src="/static/images/galeria/img_8644.webp" class="marquee-img">
-            <img src="/static/images/galeria/copia_de_img-202606037.webp" class="marquee-img">
-            <img src="/static/images/galeria/copia_de_img-202606032.webp" class="marquee-img">
+            <!-- Primer bloque de imágenes -->
+            <img src="/static/images/galeria/galeria1.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria2.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria3.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria4.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria5.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria6.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria 8.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria10.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria11.jpg" class="marquee-img">
+            <!-- Segundo bloque para loop infinito -->
+            <img src="/static/images/galeria/galeria1.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria2.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria3.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria4.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria5.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria6.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria 8.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria10.jpg" class="marquee-img">
+            <img src="/static/images/galeria/galeria11.jpg" class="marquee-img">
         </div>
     </div>
 
@@ -143,11 +175,11 @@
                             <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
                             <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
                             <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-                            <li><i class="fas fa-check"></i> Acceso a talleres.</li>
+
                         </ul>
                     </div>
                     <div class="plan-footer">
-                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'DAY PASS')">Seleccionar</button>
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'DAY PASS', 450)">Seleccionar</button>
                     </div>
                 </div>
 
@@ -162,11 +194,11 @@
                             <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
                             <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
                             <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-                            <li><i class="fas fa-check"></i> Acceso a talleres.</li>
+
                         </ul>
                     </div>
                     <div class="plan-footer">
-                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'PASE 5 DÍAS')">Seleccionar</button>
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'PASE 5 DÍAS', 1800)">Seleccionar</button>
                     </div>
                 </div>
 
@@ -187,7 +219,7 @@
                         </ul>
                     </div>
                     <div class="plan-footer">
-                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE')">Seleccionar</button>
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE', 3500)">Seleccionar</button>
                     </div>
                 </div>
 
@@ -217,7 +249,7 @@
             <div class="three-cols">
                 <div class="service-card">
                     <h4>Coworking + Ludoteca</h4>
-                    <img src="/static/images/galeria/copia_de_dsc00087.webp" alt="Coworking">
+                    <img src="/static/images/galeria/galeria11.jpg" alt="Coworking">
                     <ul>
                         <li><i class="fas fa-wifi"></i> Wifi de alta velocidad</li>
                         <li><i class="fas fa-child"></i> Nanitas capacitadas</li>
@@ -251,10 +283,22 @@
 
     <!-- 4. Calendario de Actividades -->
     <section style="background: white; padding: 4rem 0;">
-        <div class="container text-center">
-            <h2 class="section-title">Talleres y Actividades</h2>
-            <p style="margin-bottom: 3rem; font-size: 1.1rem;">Además de juego libre, organizamos talleres diseñados para el desarrollo integral de tus pequeños.</p>
-            
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
+                <div style="flex: 1; min-width: 300px; text-align: left;">
+                    <h2 class="section-title" style="text-align: left;">Talleres y Actividades</h2>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6;">Próximamente tendremos increíbles talleres diseñados para el desarrollo integral de tus pequeños. ¡Mantente atento a nuestras redes sociales para conocer todas las novedades!</p>
+                </div>
+                <div style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
+                    <div style="width: 100%; aspect-ratio: 16/9; background-color: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
+                        <div style="text-align: center; color: #888;">
+                            <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <p style="font-weight: bold; font-size: 1.2rem;">Espacio para Video</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-time">Lunes 4:00 PM</div>
@@ -279,6 +323,7 @@
                 </div>
             </div>
             <a href="/contacto.html" class="btn-primary mt-2">Inscribir a un Taller</a>
+            -->
         </div>
     </section>
 
@@ -289,26 +334,37 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"Es mi salvación los días que tengo juntas importantes. Mi hija ama la ludoteca y las nanitas son súper atentas. Yo me tomo un café y trabajo tranquila."</p>
+                    <p>"Quiero decirles que hoy fui a chispa con mi pequeño y WOW 😍😍 un servicio de 100000 estrellas, las niñeras unas divinas !!!! Y el servicio de cafetería wow !"</p>
                     <div class="author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mariana">
-                        <span>Mariana R. <br><small>Mamá emprendedora</small></span>
+                        <span>Ivis Mackay <br><small>Reseña en Google</small></span>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"Le celebramos los 5 años a mi hijo aquí y todo estuvo espectacular. El Party Center está hermoso, el servicio fue de primera y no me preocupé por nada."</p>
+                    <p>"We had a great experience here! The play area is great, my 2 year old loved it and would have stayed for hours! The Nannys were excellent. The best part, they have a really nice cafe and terrace to sit and relax (or work) whilst the kids play! Definitely recommend"</p>
                     <div class="author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos">
-                        <span>Carlos T. <br><small>Papá de Leo</small></span>
+                        <span>Amy Williams <br><small>Reseña en Google</small></span>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"El internet es rapidísimo y las sillas son muy cómodas. Compré el Workpass 40 y siento que me rinde muchísimo el tiempo. ¡Súper recomendado!"</p>
+                    <p>"Me encanto!!! Sus instalaciones, todo su personal , sus nanitas son divinas , hicieron que pasáramos una mañana agusto las mamis platicando y los peques jugando !!! Mega lo recomiendo !!!!"</p>
                     <div class="author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sofía">
-                        <span>Sofía M. <br><small>Freelancer</small></span>
+                        <span>Andrea Ibarra <br><small>Reseña en Google</small></span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Increíble lugar, mi hijo la pasó super y siempre muy bien cuidado"</p>
+                    <div class="author">
+                        <span>Andrea Sánchez <br><small>Reseña en Google</small></span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"A mis hijos les encantó, sin duda volverán a festejar su cumpleaños ahí"</p>
+                    <div class="author">
+                        <span>juan sellerier <br><small>Reseña en Google</small></span>
                     </div>
                 </div>
             </div>

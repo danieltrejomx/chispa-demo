@@ -62,11 +62,11 @@
                             <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
                             <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
                             <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-                            <li><i class="fas fa-check"></i> Acceso a talleres.</li>
+
                         </ul>
                     </div>
                     <div class="plan-footer">
-                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'DAY PASS')">Seleccionar</button>
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'DAY PASS', 450)">Seleccionar</button>
                     </div>
                 </div>
 
@@ -81,11 +81,11 @@
                             <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
                             <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
                             <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-                            <li><i class="fas fa-check"></i> Acceso a talleres.</li>
+
                         </ul>
                     </div>
                     <div class="plan-footer">
-                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'PASE 5 DÍAS')">Seleccionar</button>
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'PASE 5 DÍAS', 1800)">Seleccionar</button>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
                         </ul>
                     </div>
                     <div class="plan-footer">
-                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE')">Seleccionar</button>
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE', 3500)">Seleccionar</button>
                     </div>
                 </div>
 
@@ -190,29 +190,58 @@
     </footer>
 
     <div id="planModal" class="modal-overlay">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 500px;">
             <span class="close-modal" onclick="closePlanModal()">&times;</span>
-            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase;">Estás interesado en:</h3>
-            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 1rem;">[Nombre del Plan]</h2>
+            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase;">Checkout</h3>
+            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 0.5rem;">[Nombre del Plan]</h2>
+            <p id="modalPlanPrice" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; color: var(--dark-color);">$0.00 MXN</p>
+            
             <div id="modalPlanSummary" style="text-align: left; margin-bottom: 1.5rem; background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 0.9rem;">
+                <div id="modalPlanDetails" style="margin-bottom: 1rem; color: #555;"></div>
+                <p style="font-weight: bold; margin-bottom: 0.5rem; color: #333;">Beneficios incluidos:</p>
                 <ul class="plan-features" style="margin-bottom: 0;"></ul>
             </div>
             
-            <p style="margin-bottom: 1.5rem; color: #555; font-size: 0.9rem;">Déjanos tus datos para enviarte más información por WhatsApp.</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 1.5rem;">
+            <h4 style="text-align: left; margin-bottom: 1rem;">Datos de Contacto</h4>
             
-            <form id="planForm" onsubmit="sendToWhatsApp(event)">
+            <form id="planForm" onsubmit="processPayment(event)">
                 <div style="margin-bottom: 1rem; text-align: left;">
-                    <label for="userName" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color);">Nombre completo:</label>
+                    <label for="userName" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Nombre completo:</label>
                     <input type="text" id="userName" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
                 </div>
                 <div style="margin-bottom: 1.5rem; text-align: left;">
-                    <label for="userDuda" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color);">¿Tienes alguna duda en especial?</label>
-                    <textarea id="userDuda" rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;"></textarea>
+                    <label for="userEmail" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Correo electrónico:</label>
+                    <input type="email" id="userEmail" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
                 </div>
-                <button type="submit" class="btn-primary w-100" style="display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #25D366; color: white; border: none; font-size: 1.1rem; padding: 0.8rem;">
-                    <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> Enviar por WhatsApp
+                
+                <h4 style="text-align: left; margin-bottom: 1rem;">Método de Pago <i class="fab fa-cc-visa" style="color: #1a1f71;"></i> <i class="fab fa-cc-mastercard" style="color: #eb001b;"></i></h4>
+                
+                <div style="margin-bottom: 1rem; text-align: left;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Número de tarjeta:</label>
+                    <input type="text" placeholder="0000 0000 0000 0000" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
+                </div>
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; text-align: left;">
+                    <div style="flex: 1;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Vencimiento:</label>
+                        <input type="text" placeholder="MM/YY" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">CVC:</label>
+                        <input type="text" placeholder="123" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
+                    </div>
+                </div>
+                
+                <button type="submit" id="payButton" class="btn-primary w-100" style="display: flex; align-items: center; justify-content: center; gap: 10px; border: none; font-size: 1.1rem; padding: 1rem;">
+                    <i class="fas fa-lock"></i> Pagar Seguro
                 </button>
             </form>
+            
+            <div id="paymentSuccess" style="display: none; text-align: center; padding: 2rem 0;">
+                <i class="fas fa-check-circle" style="color: #25D366; font-size: 4rem; margin-bottom: 1rem;"></i>
+                <h3>¡Pago Exitoso!</h3>
+                <p style="color: #666; margin-top: 0.5rem;">Hemos enviado tu recibo por correo. ¡Te esperamos en Chispa Experience!</p>
+            </div>
         </div>
     </div>
 
