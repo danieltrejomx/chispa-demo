@@ -11,7 +11,7 @@
     <header>
         <div class="container header-inner">
             <div class="header-left">
-                <a href="/checkout.html">MEMBRESÍAS</a>
+                <a href="/checkout.html">MEMBRESÍA / CO-WORKING</a>
                 <a href="/fiestas.html">PARTY CENTER</a>
             </div>
             <a href="/" class="logo">
@@ -50,22 +50,47 @@
 
         <div id="step1" class="blue-banner" style="border-radius: 16px; margin: 0 auto 3rem auto; padding: 3rem 2rem; max-width: 1400px;">
             <p style="font-size: 1.3rem; margin-top: 0; margin-bottom: 2rem; font-weight: 400; color: white;">Selecciona tu Membresía</p>
-            <div class="plans-grid">
+            
+            <style>
+            .plans-grid-3 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                max-width: 1150px;
+                margin: 0 auto;
+                align-items: stretch;
+            }
+            @media (max-width: 992px) {
+                .plans-grid-3 {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 768px) {
+                .plans-grid-3 {
+                    grid-template-columns: 1fr;
+                }
+            }
+            </style>
+
+            <h3 style="color: white; font-family: var(--font-title); font-size: 1.8rem; margin-top: 1rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; text-align: center;">PASES Y MEMBRESÍAS DE ACCESO</h3>
+            <div class="plans-grid-3" style="margin-bottom: 4rem;">
                 <!-- DAY PASS -->
                 <div class="plan-card">
                     <div class="plan-header">
                         <h3>DAY PASS</h3>
+                        <div style="font-size: 2.2rem; font-weight: 800; color: var(--secondary-color); margin: 0.5rem 0;">$450 <span style="font-size: 1rem; font-weight: normal; opacity: 0.8;">MXN</span></div>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #666; font-weight: 600;">1 niño · por día</p>
                     </div>
-                    <div class="plan-body">
+                    <div class="plan-body" style="flex-grow: 1;">
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Acceso a coworking, ludoteca y cafetería durante todo el día.</li>
-                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
-                            <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
-                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-
+                            <li><i class="fas fa-check"></i> 1 adulto incluido ($100)</li>
+                            <li><i class="fas fa-check"></i> Adulto extra: $100</li>
+                            <li><i class="fas fa-check"></i> Incluye Wifi</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                            <li><i class="fas fa-check"></i> Servicio de niñeras.</li>
                         </ul>
                     </div>
-                    <div class="plan-footer">
+                    <div class="plan-footer" style="margin-top: 1.5rem;">
                         <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'DAY PASS', 450)">Seleccionar</button>
                     </div>
                 </div>
@@ -74,17 +99,18 @@
                 <div class="plan-card">
                     <div class="plan-header">
                         <h3>PASE 5 DÍAS</h3>
+                        <div style="font-size: 2.2rem; font-weight: 800; color: var(--secondary-color); margin: 0.5rem 0;">$1,800 <span style="font-size: 1rem; font-weight: normal; opacity: 0.8;">MXN</span></div>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #666; font-weight: 600;">1 adulto + 1 niño</p>
                     </div>
-                    <div class="plan-body">
+                    <div class="plan-body" style="flex-grow: 1;">
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Acceso a coworking, ludoteca y cafetería durante todo el día.</li>
-                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
-                            <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
-                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-
+                            <li><i class="fas fa-check"></i> 10% en cafetería</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                            <li><i class="fas fa-check"></i> Válido 30 días naturales</li>
+                            <li><i class="fas fa-check"></i> Servicio de niñeras.</li>
                         </ul>
                     </div>
-                    <div class="plan-footer">
+                    <div class="plan-footer" style="margin-top: 1.5rem;">
                         <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'PASE 5 DÍAS', 1800)">Seleccionar</button>
                     </div>
                 </div>
@@ -94,35 +120,116 @@
                     <div class="popular-badge">EL MÁS COMPLETO</div>
                     <div class="plan-header">
                         <h3>CHISPA EXPERIENCE</h3>
+                        <div style="font-size: 2.2rem; font-weight: 800; color: var(--secondary-color); margin: 0.5rem 0;">$6,500 <span style="font-size: 1rem; font-weight: normal; opacity: 0.8;">MXN</span></div>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #666; font-weight: 600;">1 adulto + 1 niño · 20 días</p>
                     </div>
-                    <div class="plan-body">
+                    <div class="plan-body" style="flex-grow: 1;">
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Acceso ilimitado durante el mes.</li>
-                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                            <li><i class="fas fa-check"></i> 10% en cafetería</li>
+                            <li><i class="fas fa-check"></i> 10% en Chispa Shop</li>
+                            <li><i class="fas fa-check"></i> 10% en Fiestas Infantiles</li>
+                            <li><i class="fas fa-check"></i> Válido por 45 días naturales</li>
                             <li><i class="fas fa-check"></i> Servicio de niñeras.</li>
-                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-                            <li><i class="fas fa-check"></i> Descuentos en celebraciones.</li>
-                            <li><i class="fas fa-check"></i> Eventos exclusivos para miembros.</li>
                         </ul>
                     </div>
-                    <div class="plan-footer">
-                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE', 3500)">Seleccionar</button>
+                    <div class="plan-footer" style="margin-top: 1.5rem;">
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE', 6500)">Seleccionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: white; font-family: var(--font-title); font-size: 1.8rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; text-align: center;">ESPACIO DE TRABAJO</h3>
+            <div class="plans-grid-3" style="margin-bottom: 4rem;">
+                <!-- SÓLO POR HORA -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>SÓLO POR HORA</h3>
+                        <div style="font-size: 2.2rem; font-weight: 800; color: var(--secondary-color); margin: 0.5rem 0;">$200 <span style="font-size: 1rem; font-weight: normal; opacity: 0.8;">MXN</span></div>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #666; font-weight: 600;">por hora</p>
+                    </div>
+                    <div class="plan-body" style="flex-grow: 1;">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Incluye Wifi</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer" style="margin-top: 1.5rem;">
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'SÓLO POR HORA', 200)">Seleccionar</button>
                     </div>
                 </div>
 
-                <!-- MEMBRESÍAS CORPORATIVAS -->
+                <!-- WORKPASS 40 HORAS -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>WORKPASS 40 HORAS</h3>
+                        <div style="font-size: 2.2rem; font-weight: 800; color: var(--secondary-color); margin: 0.5rem 0;">$3,500 <span style="font-size: 1rem; font-weight: normal; opacity: 0.8;">MXN</span></div>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #666; font-weight: 600;">40 horas · vigencia 30 días</p>
+                    </div>
+                    <div class="plan-body" style="flex-grow: 1;">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Incluye Wifi</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                            <li><i class="fas fa-check"></i> 2 impresiones gratis B&N por día</li>
+                            <li><i class="fas fa-check"></i> 10% en cafetería</li>
+                            <li><i class="fas fa-check"></i> Válido por 30 días naturales</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer" style="margin-top: 1.5rem;">
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'WORKPASS 40 HORAS', 3500)">Seleccionar</button>
+                    </div>
+                </div>
+
+                <!-- CORPORATIVAS -->
                 <div class="plan-card">
                     <div class="plan-header">
                         <h3>CORPORATIVAS</h3>
+                        <div style="font-size: 2.2rem; font-weight: 800; color: var(--secondary-color); margin: 0.5rem 0;">B2B</div>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #666; font-weight: 600;">Planes corporativos</p>
                     </div>
-                    <div class="plan-body">
+                    <div class="plan-body" style="flex-grow: 1;">
                         <ul class="plan-features">
                             <li><i class="fas fa-check"></i> Paquetes personalizados para empresas.</li>
                             <li><i class="fas fa-check"></i> Diseñamos el plan ideal para tu equipo.</li>
                         </ul>
                     </div>
-                    <div class="plan-footer">
+                    <div class="plan-footer" style="margin-top: 1.5rem;">
                         <button class="btn-secondary w-100" style="border: none;" onclick="openPlanModal(this, 'MEMBRESÍAS CORPORATIVAS')">Contactar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFICE SUPPLIES -->
+            <div style="background: rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.15); text-align: left; max-width: 1100px; margin-left: auto; margin-right: auto; backdrop-filter: blur(10px);">
+                <h3 style="color: white; font-family: var(--font-title); margin-top: 0; margin-bottom: 2rem; font-size: 1.6rem; display: flex; align-items: center; gap: 0.8rem; justify-content: center;"><i class="fas fa-print" style="color: var(--mustard-bg);"></i> OFFICE SUPPLIES</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; color: white;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">Impresión B&N</span>
+                            <span style="font-weight: 800; color: var(--mustard-bg);">$5 MXN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">por hoja, tamaño carta</p>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">Impresión a color</span>
+                            <span style="font-weight: 800; color: var(--mustard-bg);">$15 MXN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">por hoja, tamaño carta</p>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">Scanner</span>
+                            <span style="font-weight: 800; color: var(--mustard-bg);">$5 MXN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">por hoja, tamaño carta</p>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">Audífonos Bluetooth</span>
+                            <span style="font-weight: 800; color: var(--mustard-bg);">$200 MXN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">venta por unidad</p>
                     </div>
                 </div>
             </div>
@@ -190,58 +297,27 @@
     </footer>
 
     <div id="planModal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 500px;">
+        <div class="modal-content" style="max-width: 440px;">
             <span class="close-modal" onclick="closePlanModal()">&times;</span>
-            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase;">Checkout</h3>
-            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 0.5rem;">[Nombre del Plan]</h2>
-            <p id="modalPlanPrice" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; color: var(--dark-color);">$0.00 MXN</p>
-            
-            <div id="modalPlanSummary" style="text-align: left; margin-bottom: 1.5rem; background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 0.9rem;">
-                <div id="modalPlanDetails" style="margin-bottom: 1rem; color: #555;"></div>
-                <p style="font-weight: bold; margin-bottom: 0.5rem; color: #333;">Beneficios incluidos:</p>
+            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase; margin-bottom: 0.2rem;">Plan Seleccionado</h3>
+            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 0.3rem;">[Nombre del Plan]</h2>
+            <p id="modalPlanPrice" style="font-size: 1.4rem; font-weight: bold; margin-bottom: 1rem; color: var(--dark-color);">$0.00 MXN</p>
+
+            <div id="modalPlanSummary" style="text-align: left; margin-bottom: 1.4rem; background: #f9f9f9; padding: 0.9rem 1rem; border-radius: 10px; font-size: 0.88rem;">
+                <p style="font-weight: 700; margin-bottom: 0.5rem; color: #333;">Beneficios incluidos:</p>
                 <ul class="plan-features" style="margin-bottom: 0;"></ul>
             </div>
-            
-            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 1.5rem;">
-            <h4 style="text-align: left; margin-bottom: 1rem;">Datos de Contacto</h4>
-            
-            <form id="planForm" onsubmit="processPayment(event)">
-                <div style="margin-bottom: 1rem; text-align: left;">
-                    <label for="userName" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Nombre completo:</label>
-                    <input type="text" id="userName" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                </div>
-                <div style="margin-bottom: 1.5rem; text-align: left;">
-                    <label for="userEmail" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Correo electrónico:</label>
-                    <input type="email" id="userEmail" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                </div>
-                
-                <h4 style="text-align: left; margin-bottom: 1rem;">Método de Pago <i class="fab fa-cc-visa" style="color: #1a1f71;"></i> <i class="fab fa-cc-mastercard" style="color: #eb001b;"></i></h4>
-                
-                <div style="margin-bottom: 1rem; text-align: left;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Número de tarjeta:</label>
-                    <input type="text" placeholder="0000 0000 0000 0000" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                </div>
-                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; text-align: left;">
-                    <div style="flex: 1;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Vencimiento:</label>
-                        <input type="text" placeholder="MM/YY" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                    </div>
-                    <div style="flex: 1;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">CVC:</label>
-                        <input type="text" placeholder="123" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                    </div>
-                </div>
-                
-                <button type="submit" id="payButton" class="btn-primary w-100" style="display: flex; align-items: center; justify-content: center; gap: 10px; border: none; font-size: 1.1rem; padding: 1rem;">
-                    <i class="fas fa-lock"></i> Pagar Seguro
-                </button>
-            </form>
-            
-            <div id="paymentSuccess" style="display: none; text-align: center; padding: 2rem 0;">
-                <i class="fas fa-check-circle" style="color: #25D366; font-size: 4rem; margin-bottom: 1rem;"></i>
-                <h3>¡Pago Exitoso!</h3>
-                <p style="color: #666; margin-top: 0.5rem;">Hemos enviado tu recibo por correo. ¡Te esperamos en Chispa Experience!</p>
-            </div>
+
+            <a id="whatsappModalBtn" href="#" target="_blank"
+               style="display: flex; align-items: center; justify-content: center; gap: 10px;
+                      background: #25D366; color: white; font-weight: 700; font-size: 1.05rem;
+                      padding: 0.9rem 1rem; border-radius: 50px; text-decoration: none;
+                      transition: background 0.2s;">
+                <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i> Contactar por WhatsApp
+            </a>
+            <p style="font-size: 0.78rem; color: #aaa; text-align: center; margin-top: 0.6rem;">
+                Te responderemos para confirmar tu reservación
+            </p>
         </div>
     </div>
 
@@ -259,7 +335,7 @@
             if (planParam) {
                 if (planParam === 'daypass') selectPlan('DAY_PASS', 450);
                 if (planParam === 'pase5dias') selectPlan('PASE_5_DIAS', 1800);
-                if (planParam === 'chispaexperience') selectPlan('CHISPA_EXPERIENCE', 3500);
+                if (planParam === 'chispaexperience') selectPlan('CHISPA_EXPERIENCE', 6500);
                 if (planParam === 'corporativas') window.location.href = '/contacto.html';
             }
         };

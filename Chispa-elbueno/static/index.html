@@ -11,7 +11,7 @@
     <header>
         <div class="container header-inner" style="justify-content: space-between;">
             <div class="header-left" style="gap: 2.5rem;">
-                <a href="/checkout.html" style="text-transform: none;">Membresías</a>
+                <a href="/checkout.html" style="text-transform: none;">Membresía / Co-working</a>
                 <a href="/fiestas.html" style="text-transform: none;">Party Center</a>
             </div>
             <a href="/" class="logo">
@@ -26,58 +26,27 @@
     </header>
 
     <div id="planModal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 500px;">
+        <div class="modal-content" style="max-width: 440px;">
             <span class="close-modal" onclick="closePlanModal()">&times;</span>
-            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase;">Checkout</h3>
-            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 0.5rem;">[Nombre del Plan]</h2>
-            <p id="modalPlanPrice" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; color: var(--dark-color);">$0.00 MXN</p>
-            
-            <div id="modalPlanSummary" style="text-align: left; margin-bottom: 1.5rem; background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 0.9rem;">
-                <div id="modalPlanDetails" style="margin-bottom: 1rem; color: #555;"></div>
-                <p style="font-weight: bold; margin-bottom: 0.5rem; color: #333;">Beneficios incluidos:</p>
+            <h3 style="color: var(--secondary-color); font-family: var(--font-title); text-transform: uppercase; margin-bottom: 0.2rem;">Plan Seleccionado</h3>
+            <h2 id="modalPlanName" style="color: var(--primary-color); margin-bottom: 0.3rem;">[Nombre del Plan]</h2>
+            <p id="modalPlanPrice" style="font-size: 1.4rem; font-weight: bold; margin-bottom: 1rem; color: var(--dark-color);">$0.00 MXN</p>
+
+            <div id="modalPlanSummary" style="text-align: left; margin-bottom: 1.4rem; background: #f9f9f9; padding: 0.9rem 1rem; border-radius: 10px; font-size: 0.88rem;">
+                <p style="font-weight: 700; margin-bottom: 0.5rem; color: #333;">Beneficios incluidos:</p>
                 <ul class="plan-features" style="margin-bottom: 0;"></ul>
             </div>
-            
-            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 1.5rem;">
-            <h4 style="text-align: left; margin-bottom: 1rem;">Datos de Contacto</h4>
-            
-            <form id="planForm" onsubmit="processPayment(event)">
-                <div style="margin-bottom: 1rem; text-align: left;">
-                    <label for="userName" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Nombre completo:</label>
-                    <input type="text" id="userName" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                </div>
-                <div style="margin-bottom: 1.5rem; text-align: left;">
-                    <label for="userEmail" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Correo electrónico:</label>
-                    <input type="email" id="userEmail" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                </div>
-                
-                <h4 style="text-align: left; margin-bottom: 1rem;">Método de Pago <i class="fab fa-cc-visa" style="color: #1a1f71;"></i> <i class="fab fa-cc-mastercard" style="color: #eb001b;"></i></h4>
-                
-                <div style="margin-bottom: 1rem; text-align: left;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Número de tarjeta:</label>
-                    <input type="text" placeholder="0000 0000 0000 0000" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                </div>
-                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; text-align: left;">
-                    <div style="flex: 1;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">Vencimiento:</label>
-                        <input type="text" placeholder="MM/YY" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                    </div>
-                    <div style="flex: 1;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--dark-color); font-size: 0.9rem;">CVC:</label>
-                        <input type="text" placeholder="123" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;">
-                    </div>
-                </div>
-                
-                <button type="submit" id="payButton" class="btn-primary w-100" style="display: flex; align-items: center; justify-content: center; gap: 10px; border: none; font-size: 1.1rem; padding: 1rem;">
-                    <i class="fas fa-lock"></i> Pagar Seguro
-                </button>
-            </form>
-            
-            <div id="paymentSuccess" style="display: none; text-align: center; padding: 2rem 0;">
-                <i class="fas fa-check-circle" style="color: #25D366; font-size: 4rem; margin-bottom: 1rem;"></i>
-                <h3>¡Pago Exitoso!</h3>
-                <p style="color: #666; margin-top: 0.5rem;">Hemos enviado tu recibo por correo. ¡Te esperamos en Chispa Experience!</p>
-            </div>
+
+            <a id="whatsappModalBtn" href="#" target="_blank"
+               style="display: flex; align-items: center; justify-content: center; gap: 10px;
+                      background: #25D366; color: white; font-weight: 700; font-size: 1.05rem;
+                      padding: 0.9rem 1rem; border-radius: 50px; text-decoration: none;
+                      transition: background 0.2s;">
+                <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i> Contactar por WhatsApp
+            </a>
+            <p style="font-size: 0.78rem; color: #aaa; text-align: center; margin-top: 0.6rem;">
+                Te responderemos para confirmar tu reservación
+            </p>
         </div>
     </div>
 
@@ -117,10 +86,15 @@
                 <!-- Right Side: Dynamic Gallery -->
                 <div class="hero-gallery-container" style="position: relative; width: 100%; height: 380px; display: flex; justify-content: center; align-items: center;">
                     <div class="gallery-wrapper">
-                        <img src="/static/images/galeria/galeria1.jpg" alt="Chispa Experience 1" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/galeria2.jpg" alt="Chispa Experience 2" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/galeria2.jpg" alt="Chispa Experience 3" class="circular-img gallery-slide">
-                        <img src="/static/images/galeria/galeria2.jpg" alt="Chispa Experience 4" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/nuevas1.jpg" alt="Chispa Experience 1" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/nuevas2.jpg" alt="Chispa Experience 2" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/nuevas3.jpg" alt="Chispa Experience 3" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/nuevas4.jpg" alt="Chispa Experience 4" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/nuevas5.jpg" alt="Chispa Experience 5" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/galeria1.jpg" alt="Chispa Experience 6" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/galeria2.jpg" alt="Chispa Experience 7" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/galeria3.jpg" alt="Chispa Experience 8" class="circular-img gallery-slide">
+                        <img src="/static/images/galeria/galeria4.jpg" alt="Chispa Experience 9" class="circular-img gallery-slide">
                     </div>
                 </div>
                 
@@ -137,20 +111,30 @@
         <div class="marquee-track">
             <!-- Primer bloque de imágenes -->
             <img src="/static/images/galeria/galeria1.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas1.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria2.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas2.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria3.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas3.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria4.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas4.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria5.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas5.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria6.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria 8.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria10.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria11.jpg" class="marquee-img">
             <!-- Segundo bloque para loop infinito -->
             <img src="/static/images/galeria/galeria1.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas1.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria2.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas2.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria3.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas3.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria4.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas4.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria5.jpg" class="marquee-img">
+            <img src="/static/images/galeria/nuevas5.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria6.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria 8.jpg" class="marquee-img">
             <img src="/static/images/galeria/galeria10.jpg" class="marquee-img">
@@ -160,22 +144,47 @@
 
     <section class="blue-banner" id="membresias-banner" style="padding: 5rem 0;">
         <div class="container text-center" style="max-width: 1400px;">
-            <h2 style="margin-bottom: 0;">MEMBRESÍAS</h2>
-            <p style="font-size: 1.3rem; margin-top: 1rem; margin-bottom: 4rem; font-weight: 400; color: white;">Servicios incluidos en todas las membresías</p>
+            <h2 style="margin-bottom: 3rem;">MEMBRESÍAS</h2>
             
-            <div class="plans-grid">
+            <style>
+            .plans-grid-3 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                max-width: 1150px;
+                margin: 0 auto;
+                align-items: stretch;
+            }
+            @media (max-width: 992px) {
+                .plans-grid-3 {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 768px) {
+                .plans-grid-3 {
+                    grid-template-columns: 1fr;
+                }
+            }
+            </style>
+            
+            <h3 style="color: white; font-family: var(--font-title); font-size: 1.8rem; margin-top: 1rem; margin-bottom: 2.5rem; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; text-align: center;">PASES Y MEMBRESÍAS DE ACCESO</h3>
+            <div class="plans-grid-3" style="margin-bottom: 5rem; align-items: center;">
+
                 <!-- DAY PASS -->
                 <div class="plan-card">
                     <div class="plan-header">
                         <h3>DAY PASS</h3>
+                        <div class="plan-price">$450 <span>MXN</span></div>
+                        <p class="plan-subtitle">1 niño · por día</p>
                     </div>
+                    <div class="plan-divider"></div>
                     <div class="plan-body">
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Acceso a coworking, ludoteca y cafetería durante todo el día.</li>
-                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
-                            <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
-                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-
+                            <li><i class="fas fa-check"></i> 1 adulto incluido ($100)</li>
+                            <li><i class="fas fa-check"></i> Adulto extra: $100</li>
+                            <li><i class="fas fa-check"></i> Incluye Wifi</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                            <li><i class="fas fa-check"></i> Servicio de niñeras</li>
                         </ul>
                     </div>
                     <div class="plan-footer">
@@ -187,14 +196,16 @@
                 <div class="plan-card">
                     <div class="plan-header">
                         <h3>PASE 5 DÍAS</h3>
+                        <div class="plan-price">$1,800 <span>MXN</span></div>
+                        <p class="plan-subtitle">1 adulto + 1 niño</p>
                     </div>
+                    <div class="plan-divider"></div>
                     <div class="plan-body">
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Acceso a coworking, ludoteca y cafetería durante todo el día.</li>
-                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
-                            <li><i class="fas fa-check"></i> Servicio de niñeras por horas.</li>
-                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-
+                            <li><i class="fas fa-check"></i> 10% en cafetería</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                            <li><i class="fas fa-check"></i> Válido 30 días naturales</li>
+                            <li><i class="fas fa-check"></i> Servicio de niñeras</li>
                         </ul>
                     </div>
                     <div class="plan-footer">
@@ -204,38 +215,61 @@
 
                 <!-- CHISPA EXPERIENCE (Destacado) -->
                 <div class="plan-card highlighted-plan">
-                    <div class="popular-badge">EL MÁS COMPLETO</div>
+                    <div class="popular-badge">⭐ EL MÁS COMPLETO</div>
                     <div class="plan-header">
                         <h3>CHISPA EXPERIENCE</h3>
+                        <div class="plan-price">$6,500 <span>MXN</span></div>
+                        <p class="plan-subtitle">1 adulto + 1 niño · 20 días</p>
                     </div>
+                    <div class="plan-divider"></div>
                     <div class="plan-body">
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Acceso ilimitado durante el mes.</li>
-                            <li><i class="fas fa-check"></i> Internet de alta velocidad (WiFi)</li>
-                            <li><i class="fas fa-check"></i> Servicio de niñeras.</li>
-                            <li><i class="fas fa-check"></i> Comunidad y networking.</li>
-                            <li><i class="fas fa-check"></i> Descuentos en celebraciones.</li>
-                            <li><i class="fas fa-check"></i> Eventos exclusivos para miembros.</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                            <li><i class="fas fa-check"></i> 10% en cafetería</li>
+                            <li><i class="fas fa-check"></i> 10% en Chispa Shop</li>
+                            <li><i class="fas fa-check"></i> 10% en Fiestas Infantiles</li>
+                            <li><i class="fas fa-check"></i> Válido por 45 días naturales</li>
+                            <li><i class="fas fa-check"></i> Servicio de niñeras</li>
                         </ul>
                     </div>
                     <div class="plan-footer">
-                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE', 3500)">Seleccionar</button>
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'CHISPA EXPERIENCE', 6500)">Seleccionar</button>
                     </div>
                 </div>
+            </div>
 
-                <!-- MEMBRESÍAS CORPORATIVAS -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>CORPORATIVAS</h3>
+
+            <!-- OFFICE SUPPLIES -->
+            <div style="background: rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.15); text-align: left; max-width: 1100px; margin-left: auto; margin-right: auto; backdrop-filter: blur(10px);">
+                <h3 style="color: white; font-family: var(--font-title); margin-top: 0; margin-bottom: 2rem; font-size: 1.6rem; display: flex; align-items: center; gap: 0.8rem; justify-content: center;"><i class="fas fa-print" style="color: var(--mustard-bg);"></i> OFFICE SUPPLIES</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; color: white;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">Impresión B&N</span>
+                            <span style="font-weight: 800; color: var(--mustard-bg);">$5 MXN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">por hoja, tamaño carta</p>
                     </div>
-                    <div class="plan-body">
-                        <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Paquetes personalizados para empresas.</li>
-                            <li><i class="fas fa-check"></i> Diseñamos el plan ideal para tu equipo.</li>
-                        </ul>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">Impresión a color</span>
+                            <span style="font-weight: 800; color: var(--mustard-bg);">$15 MXN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">por hoja, tamaño carta</p>
                     </div>
-                    <div class="plan-footer">
-                        <button class="btn-secondary w-100" style="border: none;" onclick="openPlanModal(this, 'MEMBRESÍAS CORPORATIVAS')">Contactar</button>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">Scanner</span>
+                            <span style="font-weight: 800; color: var(--mustard-bg);">$5 MXN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">por hoja, tamaño carta</p>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">Audífonos Bluetooth</span>
+                            <span style="font-weight: 800; color: var(--mustard-bg);">$200 MXN</span>
+                        </div>
+                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">venta por unidad</p>
                     </div>
                 </div>
             </div>
@@ -249,7 +283,7 @@
             <div class="three-cols">
                 <div class="service-card">
                     <h4>Coworking + Ludoteca</h4>
-                    <img src="/static/images/galeria/galeria11.jpg" alt="Coworking">
+                    <img src="/static/images/galeria/chispa-foto.jpg" alt="Coworking">
                     <ul>
                         <li><i class="fas fa-wifi"></i> Wifi de alta velocidad</li>
                         <li><i class="fas fa-child"></i> Nanitas capacitadas</li>
@@ -262,7 +296,7 @@
                     <img src="/static/images/galeria/img_8580.webp" alt="Party Room">
                     <ul>
                         <li><i class="fas fa-birthday-cake"></i> Fiestas infantiles temáticas</li>
-                        <li><i class="fas fa-user-friends"></i> Capacidad para 50 adultos</li>
+                        <li><i class="fas fa-user-friends"></i> Capacidad para 50 adultos y 50 niños</li>
                         <li><i class="fas fa-concierge-bell"></i> Servicio completo de catering</li>
                     </ul>
                     <a href="/fiestas.html" class="btn-primary w-100" style="margin-top: 1rem; background: var(--secondary-color);">Cotizar Fiesta</a>
@@ -327,6 +361,74 @@
         </div>
     </section>
 
+    <!-- Espacio de Trabajo -->
+    <section style="background: var(--secondary-color); padding: 4rem 0;">
+        <div class="container">
+            <h2 style="color: white; font-family: var(--font-title); font-size: 1.8rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; text-align: center;">ESPACIO DE TRABAJO</h2>
+            <div class="plans-grid-3" style="margin-bottom: 2rem;">
+                <!-- SÓLO POR HORA -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>SÓLO POR HORA</h3>
+                        <div class="plan-price">$200 <span>MXN</span></div>
+                        <p class="plan-subtitle">por hora</p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Incluye Wifi</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'SÓLO POR HORA', 200)">Seleccionar</button>
+                    </div>
+                </div>
+
+                <!-- WORKPASS 40 HORAS -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>WORKPASS 40 HORAS</h3>
+                        <div class="plan-price">$3,500 <span>MXN</span></div>
+                        <p class="plan-subtitle">40 horas · vigencia 30 días</p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Incluye Wifi</li>
+                            <li><i class="fas fa-check"></i> Café americano (con refill)</li>
+                            <li><i class="fas fa-check"></i> 2 impresiones gratis B&N por día</li>
+                            <li><i class="fas fa-check"></i> 10% en cafetería</li>
+                            <li><i class="fas fa-check"></i> Válido por 30 días naturales</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="btn-primary w-100" style="border: none;" onclick="openPlanModal(this, 'WORKPASS 40 HORAS', 3500)">Seleccionar</button>
+                    </div>
+                </div>
+
+                <!-- CORPORATIVAS -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>CORPORATIVAS</h3>
+                        <div class="plan-price" style="font-size:1.8rem;">B2B</div>
+                        <p class="plan-subtitle">Planes corporativos</p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Paquetes personalizados para empresas.</li>
+                            <li><i class="fas fa-check"></i> Diseñamos el plan ideal para tu equipo.</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="btn-secondary w-100" style="border: none;" onclick="openPlanModal(this, 'MEMBRESÍAS CORPORATIVAS')">Contactar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 5. Social Proof (Testimonios) -->
     <section class="acerca-bg" style="padding: 5rem 0;">
         <div class="container text-center">
@@ -379,7 +481,8 @@
                 <div class="faq-item">
                     <button class="faq-question">¿A partir de qué edad pueden entrar los niños a la ludoteca? <i class="fas fa-chevron-down"></i></button>
                     <div class="faq-answer">
-                        <p>Aceptamos pequeños desde 1 año hasta 10 años. Nuestras áreas y actividades están diseñadas para ser seguras y divertidas en todo este rango de edades, con supervisión constante.</p>
+                        <p>Aceptamos pequeños desde 1 año hasta 10 años. Nuestras áreas y actividades están diseñadas para ser seguras y divertidas en todo este rango de edades, con supervisión constante para las mamás y los niños.</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #555;"><strong>Nota:</strong> El servicio de niñera exclusiva por hora para bebés de brazos está sujeto a disponibilidad; si hay muchos niños en el área, podría no ser posible ofrecerlo.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -391,7 +494,7 @@
                 <div class="faq-item">
                     <button class="faq-question">¿Tengo que quedarme en el local mientras mi hijo está en la ludoteca? <i class="fas fa-chevron-down"></i></button>
                     <div class="faq-answer">
-                        <p>Sí, Chispa es un espacio compartido. Los padres deben permanecer dentro de las instalaciones (en el área de coworking o cafetería) mientras sus hijos están en la ludoteca jugando.</p>
+                        <p>Sí, Chispa es un espacio compartido. Los padres deben permanecer dentro de las instalaciones (en el área de coworking o cafetería) mientras sus hijos están en la ludoteca jugando. Excepto en los campamentos de primavera, verano e invierno.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -413,8 +516,9 @@
             </div>
             <div>
                 <h4 style="color: white; margin-bottom: 1rem; font-family: var(--font-title); font-size: 1.2rem;">Contacto</h4>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-phone" style="width: 20px;"></i> 55 8798 9223</p>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="far fa-clock" style="width: 20px;"></i> Abierto hoy hasta las 7:00 p.m.</p>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fab fa-whatsapp" style="width: 20px;"></i> 55 8798 9223</p>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="far fa-envelope" style="width: 20px;"></i> info@chispaexperience.com</p>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.4;"><i class="far fa-clock" style="width: 20px;"></i> Lunes a Sábado de 9:00 am a 7:00 pm<br><span style="margin-left: 20px; font-size: 0.8rem; opacity: 0.8;">Domingos abierto para fiestas previa reservación</span></p>
             </div>
             <div>
                 <h4 style="color: white; margin-bottom: 1rem; font-family: var(--font-title); font-size: 1.2rem;">Síguenos</h4>

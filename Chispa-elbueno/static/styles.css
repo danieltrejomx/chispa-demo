@@ -915,37 +915,61 @@ section {
 }
 .plan-card {
     background: white;
-    border-radius: 20px;
-    padding: 2rem 1rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 16px;
+    padding: 1.5rem 1.4rem 1.4rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     position: relative;
     color: var(--dark-color);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
 }
 .plan-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.13);
+}
+.plan-header {
+    text-align: center;
+    margin-bottom: 0.3rem;
 }
 .plan-header h3 {
     font-family: var(--font-title);
     color: var(--secondary-color);
-    font-size: 1.25rem;
-    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
     text-transform: uppercase;
-    text-align: center;
+    letter-spacing: 0.08em;
     line-height: 1.2;
 }
-.plan-header::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
+.plan-price {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--secondary-color);
+    line-height: 1;
+    margin: 0.25rem 0 0.15rem;
+    letter-spacing: -1px;
+}
+.plan-price span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.55;
+    letter-spacing: 0;
+}
+.plan-subtitle {
+    font-size: 0.75rem;
+    color: #999;
+    font-weight: 500;
+    margin: 0.2rem 0 0;
+}
+.plan-divider {
+    width: 30px;
+    height: 2px;
     background: var(--mustard-bg);
-    margin: 0 auto 1.5rem auto;
     border-radius: 2px;
+    margin: 0.9rem auto 1rem;
 }
 .plan-body {
     flex: 1;
@@ -953,31 +977,81 @@ section {
 .plan-features {
     list-style: none;
     padding: 0;
-    margin-bottom: 2rem;
+    margin: 0 0 1.2rem;
+    text-align: left;
 }
 .plan-features li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.4rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: #444;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    color: #555;
+    padding: 0.3rem 0.2rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+.plan-features li:last-child {
+    border-bottom: none;
 }
 .plan-features li i {
-    color: var(--mustard-bg);
-    margin-top: 4px;
-    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    flex-shrink: 0;
 }
 .plan-footer {
     margin-top: auto;
+    padding-top: 0.8rem;
 }
+.plan-footer .btn-primary {
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+}
+/* Highlighted / Featured plan */
 .highlighted-plan {
-    border: 3px solid var(--primary-color);
+    background: linear-gradient(145deg, #5B8A9E 0%, #3d6b7e 100%);
+    border: none;
     transform: scale(1.05);
+    box-shadow: 0 16px 48px rgba(91,138,158,0.45);
+}
+.highlighted-plan .plan-header h3,
+.highlighted-plan .plan-price,
+.highlighted-plan .plan-subtitle {
+    color: white;
+}
+.highlighted-plan .plan-price span {
+    color: rgba(255,255,255,0.7);
+}
+.highlighted-plan .plan-divider {
+    background: rgba(255,255,255,0.4);
+}
+.highlighted-plan .plan-features li {
+    background: transparent;
+    color: rgba(255,255,255,0.9);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.highlighted-plan .plan-features li:last-child {
+    border-bottom: none;
+}
+.highlighted-plan .plan-features li i {
+    color: rgba(255,255,255,0.8);
+    background: none;
+}
+.highlighted-plan .plan-footer .btn-primary {
+    background: white;
+    color: var(--secondary-color);
+    border: none;
+}
+.highlighted-plan .plan-footer .btn-primary:hover {
+    background: var(--mustard-bg);
+    color: white;
 }
 .highlighted-plan:hover {
     transform: scale(1.05) translateY(-8px);
+    box-shadow: 0 24px 60px rgba(91,138,158,0.55);
 }
 @media (max-width: 992px) {
     .highlighted-plan { transform: scale(1); }
